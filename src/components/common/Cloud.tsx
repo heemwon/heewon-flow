@@ -6,18 +6,17 @@ export default function Cloud({ className }: Cloud) {
   return (
     <div
       aria-hidden="true"
-      className={cn("absolute z-[50] animate-drift", className)}
+      className={cn(
+        "absolute z-[50] w-[80px] h-[60px] animate-drift md:w-[160px] md:h-[120px]",
+        className
+      )}
     >
       <Image
         src="/images/road/img-road-cloud.png"
         alt="cloud"
-        width={160}
-        height={120}
+        fill
+        sizes="160px"
         priority
-        style={{
-          width: "100%",
-          height: "auto",
-        }}
       />
     </div>
   );

@@ -1,4 +1,5 @@
 import { MotionValue, useTransform, Variants } from "framer-motion";
+import ClientOnly from "@/components/common/ClientOnly";
 import Floor from "@/components/common/Floor";
 import TetheredBalloons from "./TetheredBalloons/TetheredBalloons";
 import Character from "./Character";
@@ -28,7 +29,7 @@ export default function StickyContainer({ progress }: StickyContainerProps) {
   const characterY = useTransform(
     progress,
     [0, 0.5, 0.8, 1],
-    ["-10%", "0%", "0%", "-50%"]
+    ["0%", "30%", "30%", "-50%"]
   );
 
   const contactOpacity = useTransform(progress, [0, 0.8, 1], [0, 0, 1], {
@@ -40,35 +41,32 @@ export default function StickyContainer({ progress }: StickyContainerProps) {
 
   const grassVariants: Variants = {
     hidden: {
-      y: 60, // 바닥 아래에 숨어있다가
-      scaleY: 0.5, // 납작하게 눌려있는 상태
+      y: 60,
+      scaleY: 0.5,
       opacity: 0,
     },
     visible: {
       y: 0,
-      scaleY: [0.5, 1.2, 0.9, 1], // 💡 뿅! 하고 튀어오르며 탄성 발생
+      scaleY: [0.5, 1.2, 0.9, 1],
       opacity: 1,
       transition: {
         y: {
           type: "spring",
-          stiffness: 350, // 쫀득한 탄성
-          damping: 15, // 흔들림 정도
+          stiffness: 350,
+          damping: 15,
         },
         scaleY: {
           duration: 0.8,
-          times: [0, 0.4, 0.7, 1], // 각 구간별 변화 타이밍
+          times: [0, 0.4, 0.7, 1],
         },
         opacity: { duration: 0.2 },
       },
     },
   };
 
-  const characterOpacity = useTransform(
-    progress,
-    [0, 0.2, 1], // 💡 구간을 조금 더 명확하게 벌려보세요 (0.05는 너무 찰나입니다)
-    [0, 0, 1],
-    { clamp: true }
-  );
+  const characterOpacity = useTransform(progress, [0, 0.2, 1], [0, 0, 1], {
+    clamp: true,
+  });
 
   return (
     <div className="overflow-hidden sticky top-0 left-0 z-[400] w-full h-screen after:contenr[''] after:absolute after:-bottom-0 after:left-0 after:w-full after:h-[60px] after:bg-bg-grass">
@@ -79,15 +77,17 @@ export default function StickyContainer({ progress }: StickyContainerProps) {
           opacity: opacity,
         }}
       />
-      <Character
-        progress={progress}
-        viewport={{ once: false, amount: 0.2 }}
-        style={{
-          x: characterX,
-          y: characterY,
-          opacity: characterOpacity,
-        }}
-      />
+      <ClientOnly>
+        <Character
+          progress={progress}
+          viewport={{ once: false, amount: 0.2 }}
+          style={{
+            x: characterX,
+            y: characterY,
+            opacity: characterOpacity,
+          }}
+        />
+      </ClientOnly>
       <ContactInfo
         progress={progress}
         style={{

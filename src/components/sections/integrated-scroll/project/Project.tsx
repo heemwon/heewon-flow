@@ -145,13 +145,13 @@ export default function Project({ progress }: ProjectProps) {
             handleClosePopup={handleClosePopup}
           />
         )}
+        <Balloons
+          style={{
+            opacity: balloonsOpacity,
+            display: balloonsDisplay,
+          }}
+        />
       </ClientOnly>
-      <Balloons
-        style={{
-          opacity: balloonsOpacity,
-          display: balloonsDisplay,
-        }}
-      />
     </motion.article>
   );
 }

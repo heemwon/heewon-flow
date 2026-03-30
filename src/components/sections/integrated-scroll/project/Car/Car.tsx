@@ -10,7 +10,7 @@ export default function Car({ progress, ...props }: CarProps) {
   return (
     <motion.div
       aria-hidden="true"
-      className="absolute bottom-[110px] right-[110px] z-[100] w-[480px] h-[290px] lg:w-[560px] lg:h-[340px]"
+      className="absolute bottom-[110px] right-[110px] z-[120] w-[420px] h-[255px] md:w-[480px] md:h-[290px] lg:w-[560px] lg:h-[340px]"
       {...props}
     >
       <div className="absolute right-[20px] bottom-[280px] z-[100]">

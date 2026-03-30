@@ -19,7 +19,7 @@ export default function Header() {
               <li key={header.id}>
                 <a
                   href={`#${header.id}`}
-                  className="flex justify-center items-center p-[0_4px] min-h-[44px] rounded-[8px] font-gmarket text-title-5 leading-title-5 text-gray-dark outline-gray-dark transition hover:relative hover:z-0 hover:before:content[''] hover:before:absolute hover:before:top-[10px] hover:before:-right-[4px] hover:before:-z-1 hover:before:w-[8px] hover:before:h-[8px] hover:before:rounded-[12px] hover:before:bg-brand-point focus-visible:rounded-[4px] md:text-title-4 md:leading-title-4 dark:text-white"
+                  className="flex justify-center items-center min-h-[44px] rounded-[8px] font-gmarket text-title-5 leading-title-5 text-gray-dark outline-gray-dark transition hover:relative hover:z-0 hover:before:content[''] hover:before:absolute hover:before:top-[10px] hover:before:-right-[4px] hover:before:-z-1 hover:before:w-[8px] hover:before:h-[8px] hover:before:rounded-[12px] hover:before:bg-brand-point focus-visible:rounded-[4px] md:p-[0_4px] md:text-title-4 md:leading-title-4 dark:text-white"
                 >
                   {header.name}
                 </a>

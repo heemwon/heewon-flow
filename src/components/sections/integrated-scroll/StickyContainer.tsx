@@ -2,6 +2,7 @@ import { motion, MotionValue, useTransform } from "framer-motion";
 import Character from "@/components/character/Character";
 import TechStack from "./tech-stack/TechStack";
 import Project from "./project/Project";
+import ClientOnly from "@/components/common/ClientOnly";
 
 interface StickyContainerProps {
   progress: MotionValue<number>;
@@ -35,25 +36,27 @@ export default function StickyContainer({ progress }: StickyContainerProps) {
       <TechStack progress={progress} />
       <Project progress={progress} />
 
-      <Character
-        progress={progress}
-        cityThemepoint={0.45}
-        initial={{ opacity: 0, y: -100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.8 }}
-        transition={{
-          type: "spring",
-          stiffness: 120,
-          damping: 12,
-          duration: 0.8,
-        }}
-        style={{
-          opacity: charOpacity,
-          display: charDisplay,
-        }}
-        message={`야호! 다 왔다! 🥳 \n이제 주요 프로젝트를 구경해 볼까요?`}
-        messageClassName="-top-[110px] w-max rounded-full text-center whitespace-pre-wrap shadow-s3"
-      />
+      <ClientOnly>
+        <Character
+          progress={progress}
+          cityThemepoint={0.45}
+          initial={{ opacity: 0, y: -100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.8 }}
+          transition={{
+            type: "spring",
+            stiffness: 120,
+            damping: 12,
+            duration: 0.8,
+          }}
+          style={{
+            opacity: charOpacity,
+            display: charDisplay,
+          }}
+          message={`야호! 다 왔다! 🥳 \n이제 주요 프로젝트를 구경해 볼까요?`}
+          messageClassName="-top-[110px] w-max rounded-full text-center whitespace-pre-wrap shadow-s3"
+        />
+      </ClientOnly>
     </motion.div>
   );
 }

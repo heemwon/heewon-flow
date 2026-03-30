@@ -1,6 +1,6 @@
 export default function ScrollIndicator() {
   return (
-    <div className="flex flex-col items-center gap-[8px] absolute top-1/2 left-1/2 z-[120] -translate-y-1/2 -translate-x-1/2 animate-scroll-guide">
+    <div className="flex flex-col items-center gap-[8px] absolute top-[calc(50%-80px)] left-1/2 z-[120] -translate-y-1/2 -translate-x-1/2 animate-scroll-guide">
       <h2 className="text-title-2 text-brand-primary leading-title-2 font-bold tracking-tight dark:text-white">
         SCROLL START
       </h2>

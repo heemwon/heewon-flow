@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function IntroOnboarding() {
   return (
-    <section className="flex justify-center items-center w-full h-screen bg-light-gradient dark:bg-dark-gradient">
+    <section className="flex flex-col justify-center items-center w-full h-screen bg-light-gradient dark:bg-dark-gradient">
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -16,6 +16,10 @@ export default function IntroOnboarding() {
         <br />
         함께 걸으며 제가 가진 기술들을 보여드릴게요.
       </motion.h2>
+      <p className="p-[0_12px] mt-[12px] text-caption text-center leading-caption break-keep text-gray-dark/80 dark:text-gray-light/80 md:mt-[24px]">
+        본 프로젝트의 모든 캐릭터, 배경 및 애니메이션 에셋은 직접
+        제작되었습니다. 🎨
+      </p>
     </section>
   );
 }

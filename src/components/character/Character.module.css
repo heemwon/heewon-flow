@@ -37,3 +37,43 @@
     background-position: -1866.67px -180px;
   }
 }
+
+/* mobile */
+@media (max-width: 768px) {
+  .character {
+    width: 175px;
+    height: 135px;
+    background-size: 1400px auto;
+    transition: transform 0.2s ease;
+  }
+
+  .walking {
+    animation: walkCycle 0.8s steps(8) infinite;
+  }
+
+  .walkingLeft {
+    animation: walkLeftCycle 0.8s steps(8) infinite;
+  }
+
+  .facingLeft {
+    background-position: 0px -135px;
+  }
+
+  @keyframes walkCycle {
+    0% {
+      background-position: 0px 0px;
+    }
+    100% {
+      background-position: -1400px 0px;
+    }
+  }
+
+  @keyframes walkLeftCycle {
+    0% {
+      background-position: 0px -135px;
+    }
+    100% {
+      background-position: -1400px -135px;
+    }
+  }
+}

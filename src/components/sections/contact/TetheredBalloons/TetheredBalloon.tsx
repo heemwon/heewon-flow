@@ -28,7 +28,7 @@ export default function TetheredBalloon({
     >
       <Image
         src={`/images/balloons/img-balloon-tethered-${idx + 1}.png`}
-        alt=""
+        alt="tetherd balloon"
         sizes="130px"
         fill
         className={cn(

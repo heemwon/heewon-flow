@@ -83,15 +83,15 @@ const FloatingCharacters = forwardRef<
           }}
           onClick={() => handleOpenPopup(idx)}
           aria-label={`${char.name} 상세 정보 보기`}
-          className="flex flex-col items-center max-w-max cursor-pointer hover:relative hover:z-0 hover:before:content[''] hover:before:absolute hover:before:-top-[38px] hover:before:left-1/2 hover:before:-z-1 hover:before:w-[12px] hover:before:h-[12px] hover:before:rounded-[12px] hover:before:bg-brand-point hover:before:-translate-x-1/2"
+          className="flex flex-col items-center max-w-max cursor-pointer -translate-x-1/2 hover:relative hover:z-0 hover:before:content[''] hover:before:absolute hover:before:-top-[38px] hover:before:left-1/2 hover:before:-z-1 hover:before:w-[12px] hover:before:h-[12px] hover:before:rounded-[12px] hover:before:bg-brand-point hover:before:-translate-x-1/2"
         >
           <motion.img
             layout
             src={char.src}
-            alt=""
+            alt={`${char.name} character`}
             className={cn(
-              "w-[80px] h-auto md:w-[128px]",
-              idx === 3 && "w-[120px] md:w-[210px]"
+              "w-[96px] h-auto md:w-[128px]",
+              idx === 3 && "w-[158px] md:w-[210px]"
             )}
             variants={floatingVariants}
             animate="animate"

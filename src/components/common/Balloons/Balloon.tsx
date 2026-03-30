@@ -32,17 +32,19 @@ export default function Balloon({
   const balloonVariants: Variants = {
     hidden: { y: section === "project" ? "-40vh" : "0", opacity: 0 },
     visible: {
-      y: "100vh",
+      y: "110vh",
       opacity: [0, 1, 1, 0],
       transition: {
         duration: animConfig.duration,
         repeat: Infinity,
+        repeatType: "loop",
         ease: "linear",
         delay: animConfig.delay,
         opacity: {
-          times: [0, 0.1, 0.8, 1],
+          times: [0, 0.1, 0.7, 0.9],
           duration: animConfig.duration,
           repeat: Infinity,
+          repeatType: "loop",
           ease: "linear",
           delay: animConfig.delay,
         },
@@ -71,7 +73,7 @@ export default function Balloon({
         ? { ...hoverHandlers, "aria-label": "호버 시 상세 내용 확인" }
         : { variants: balloonVariants, initial: "hidden", animate: "visible" })}
       className={cn(
-        "flex items-center justify-center absolute z-[180] w-[200px] h-[200px] rounded-full text-center shadow-s3 transition-transform -translate-x-1/2 shadow-[inset_-5px_-5px_15px_rgba(0,0,0,0.1),0_10px_20px_rgba(0,0,0,0.15)] cursor-pointer hover:scale-110 md:w-[250px] md:h-[250px]",
+        "flex items-center justify-center absolute z-[180] w-[167px] h-[167px] rounded-full text-center shadow-s3 transition-transform -translate-x-1/2 shadow-[inset_-5px_-5px_15px_rgba(0,0,0,0.1),0_10px_20px_rgba(0,0,0,0.15)] cursor-pointer hover:scale-110 md:w-[250px] md:h-[250px]",
         balloon.x,
         balloon.y
       )}

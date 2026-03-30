@@ -18,7 +18,7 @@ export default function TechStack({ progress }: TechStackProps) {
 
   // 가로 이동값 (스크롤에 따라 0% -> -100%)
   const backgroundX = useTransform(smoothProgress, [0, 0.5], ["0%", "-30%"]);
-  const foregroundX = useTransform(progress, [0.1, 0.5], ["10%", "-100%"]);
+  const foregroundX = useTransform(progress, [0.05, 0.5], ["10%", "-100%"]);
 
   // opacity 조절값
   const skillsOpacity = useTransform(smoothProgress, [0.3, 0.45], [1, 0]);

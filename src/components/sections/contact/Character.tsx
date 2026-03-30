@@ -9,7 +9,7 @@ interface CharacterProps extends MotionProps {
 export default function Character({ progress, ...props }: CharacterProps) {
   const messageOpacity = useTransform(
     progress,
-    [0, 0.1, 0.8, 0.85],
+    [0, 0.1, 0.9, 1],
     [0, 1, 1, 0],
     { clamp: true }
   );
@@ -18,7 +18,8 @@ export default function Character({ progress, ...props }: CharacterProps) {
   return (
     <motion.div
       aria-hidden="true"
-      className="absolute top-[52%] left-1/2 z-[500] w-[170px] h-[310px] -translate-x-1/2 md:top-1/2"
+      className="absolute top-[52%] left-1/2 z-[500] w-[120px] h-[220px] -translate-x-1/2 md:top-[40%] md:w-[170px] md:h-[310px]"
+      {...props}
     >
       <HintBubble
         style={{ opacity: messageOpacity, y: messageY }}
@@ -26,18 +27,13 @@ export default function Character({ progress, ...props }: CharacterProps) {
         className="-top-[50px] left-[90px] w-max rounded-full text-center whitespace-pre-wrap shadow-s3 will-change-opacity md:left-[160px]"
       />
 
-      <motion.div
-        className="absolute w-[120px] h-[220px] will-change-opacity md:w-[170px] md:h-[310px]"
-        {...props}
-      >
-        <Image
-          src="/images/characters/img-character-balloon.png"
-          fill
-          sizes="170px"
-          alt=""
-          priority
-        />
-      </motion.div>
+      <Image
+        src="/images/characters/img-character-balloon.png"
+        fill
+        sizes="170px"
+        alt="character"
+        priority
+      />
     </motion.div>
   );
 }

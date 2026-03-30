@@ -5,7 +5,7 @@ export default function Photo() {
     <div className="relative w-[210px] h-[260px] md:w-[320px] md:h-[400px]">
       <Image
         src="/images/img-contact-profile.jpg"
-        alt=""
+        alt="my photo"
         fill
         sizes="300px"
         priority

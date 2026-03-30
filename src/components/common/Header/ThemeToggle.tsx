@@ -24,7 +24,7 @@ export default function ThemeToggle() {
       <button
         onClick={() => setTheme("light")}
         className={clsx(
-          "w-[44px] h-[44px] rounded-full cursor-pointer",
+          "w-[40px] h-[40px] rounded-full cursor-pointer md:w-[44px] md:h-[44px]",
           theme === "light" && "bg-brand-primary"
         )}
         aria-label="테마를 라이트 모드로 변경"
@@ -34,7 +34,7 @@ export default function ThemeToggle() {
       <button
         onClick={() => setTheme("dark")}
         className={clsx(
-          "w-[44px] h-[44px] rounded-full cursor-pointer",
+          "w-[40px] h-[40px] rounded-full cursor-pointer md:w-[44px] md:h-[44px]",
           theme === "dark" && "bg-gray-light"
         )}
         aria-label="테마를 다크 모드로 변경"

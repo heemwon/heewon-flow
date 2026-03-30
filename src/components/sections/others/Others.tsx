@@ -4,8 +4,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Character from "./Character";
 import Strengths from "./Strengths";
-import Balloons from "@/components/common/Balloons/Balloons";
 import SkipNav from "@/components/common/SkipNav";
+import ClientOnly from "@/components/common/ClientOnly";
 
 export default function Others() {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -18,7 +18,7 @@ export default function Others() {
     <section
       id="others"
       aria-labelledby="othersTitle"
-      className="overflow-hidden relative z-[410] w-full min-h-[120vh] bg-(--bg-city)"
+      className="overflow-hidden relative z-[410] w-full bg-(--bg-city)"
     >
       <SkipNav
         href="#contact"
@@ -28,9 +28,10 @@ export default function Others() {
       <h2 id="othersTitle" className="sr-only">
         나의 강점들
       </h2>
-      <Balloons section="strength" />
-      <motion.div className="relative bottom-0 left-0 z-[410] w-full h-screen">
-        <Strengths hoveredId={hoveredId} onHoverBallon={onHoverBallon} />
+      <motion.div className="relative bottom-0 left-0 z-[410] w-full h-[560px] md:h-[720px]">
+        <ClientOnly>
+          <Strengths hoveredId={hoveredId} onHoverBallon={onHoverBallon} />
+        </ClientOnly>
       </motion.div>
       <Character />
     </section>
