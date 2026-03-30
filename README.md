@@ -7,7 +7,7 @@
 
 ### 🔗 Live Demo
 
-- **URL:** [https://domain.com](https://domain.com)
+- **URL:** [https://my-walking-portfolio.vercel.app/](https://my-walking-portfolio.vercel.app/)
 
 ---
 

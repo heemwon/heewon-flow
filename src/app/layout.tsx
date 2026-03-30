@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Lee Hee Won" }],
   creator: "Lee Hee Won",
   alternates: {
-    // canonical: "https://domain.com",
+    canonical: "https://my-walking-portfolio.vercel.app/",
   },
   robots: {
     index: true,
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "LEEHEEWON | Frontend Developer Portfolio",
     description: "사용자 중심의 가치를 더하는 프론트엔드 개발자 이희원입니다.",
-    // url: "https://domain.com",
+    url: "https://my-walking-portfolio.vercel.app/",
     siteName: "LEEHEEWON PORTFOLIO",
     images: [
       {
