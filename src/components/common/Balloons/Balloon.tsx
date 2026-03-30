@@ -36,13 +36,13 @@ export default function Balloon({
       opacity: [0, 1, 1, 0],
       transition: {
         duration: animConfig.duration,
-        repeat: section === "project" ? Infinity : 2,
+        repeat: Infinity,
         ease: "linear",
         delay: animConfig.delay,
         opacity: {
           times: [0, 0.1, 0.8, 1],
           duration: animConfig.duration,
-          repeat: section === "project" ? Infinity : 2,
+          repeat: Infinity,
           ease: "linear",
           delay: animConfig.delay,
         },

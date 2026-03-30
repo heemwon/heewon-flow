@@ -20,17 +20,15 @@ export default function Balloons({
   section = "project",
   ...props
 }: BalloonsProps) {
-  const strengthVariants = {
-    variants: containerVariants,
-    initial: "hidden",
-    whileInView: "visible",
-    exit: "hidden",
-    viewport: { once: false, amount: 0.1 },
-  };
+  const isStrength = section === "strength";
 
   return (
     <motion.div
-      {...(section === "strength" && strengthVariants)}
+      variants={isStrength ? containerVariants : undefined}
+      initial={isStrength ? "hidden" : undefined}
+      whileInView={isStrength ? "visible" : undefined}
+      exit={isStrength ? "hidden" : undefined}
+      viewport={isStrength ? { once: false, amount: 0.2 } : undefined}
       className="absolute top-0 left-0 z-[300] w-full h-screen"
       style={{
         WebkitMaskImage:

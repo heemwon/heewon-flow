@@ -17,7 +17,7 @@ export default function BookStore({ className, ...props }: BookStoreProps) {
       {...props}
     >
       <Image
-        src="/images/road/img-road-bookStore.png"
+        src="/images/road/img-road-bookstore.png"
         fill
         sizes="760px"
         alt="store"

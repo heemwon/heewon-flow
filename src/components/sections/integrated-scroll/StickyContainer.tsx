@@ -19,6 +19,12 @@ export default function StickyContainer({ progress }: StickyContainerProps) {
     clamp: true,
   });
 
+  const charDisplay = useTransform(
+    progress,
+    [0, 0.85, 0.86, 1],
+    ["block", "block", "none", "none"]
+  );
+
   return (
     <motion.div
       style={{
@@ -43,6 +49,7 @@ export default function StickyContainer({ progress }: StickyContainerProps) {
         }}
         style={{
           opacity: charOpacity,
+          display: charDisplay,
         }}
         message={`야호! 다 왔다! 🥳 \n이제 주요 프로젝트를 구경해 볼까요?`}
         messageClassName="-top-[110px] w-max rounded-full text-center whitespace-pre-wrap shadow-s3"

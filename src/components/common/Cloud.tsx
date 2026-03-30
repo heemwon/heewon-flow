@@ -9,7 +9,7 @@ export default function Cloud({ className }: Cloud) {
       className={cn("absolute z-[50] animate-drift", className)}
     >
       <Image
-        src="/images/img-road-cloud.png"
+        src="/images/road/img-road-cloud.png"
         alt="cloud"
         width={160}
         height={120}

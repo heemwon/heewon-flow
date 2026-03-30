@@ -79,8 +79,6 @@ const FloatingCharacters = forwardRef<
             top: char.y,
             width: "max-content",
             borderRadius: "20px",
-            translateX: "-50%",
-            translateY: "-50%",
             zIndex: 200,
           }}
           onClick={() => handleOpenPopup(idx)}

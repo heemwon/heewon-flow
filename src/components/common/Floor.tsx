@@ -14,7 +14,7 @@ export default function Floor({ theme = "wave", ...props }: FloorProps) {
         <motion.div
           aria-hidden="true"
           className={cn(
-            "absolute bottom-0 left-0 z-[110] w-full h-[120px] bg-floor-road bg-bottom bg-cover"
+            "absolute bottom-0 left-0 z-[110] w-full h-[120px] bg-floor-road bg-top bg-cover"
           )}
           {...props}
         />
