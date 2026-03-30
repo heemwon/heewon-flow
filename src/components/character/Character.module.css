@@ -1,0 +1,39 @@
+.character {
+  width: 233.33px;
+  height: 180px;
+  background-image: url("/images/characters/img-character-walk.png");
+  background-size: 1866.67px auto;
+  background-repeat: no-repeat;
+  transition: transform 0.2s ease; /* 방향 전환 시 부드러움 추가 */
+}
+
+.walking {
+  animation: walkCycle 0.8s steps(8) infinite;
+}
+
+.walkingLeft {
+  animation: walkLeftCycle 0.8s steps(8) infinite;
+}
+
+/* 왼쪽 보고 서 있기 */
+.facingLeft {
+  background-position: 0px -180px;
+}
+
+@keyframes walkCycle {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: -1866.67px 0px;
+  }
+}
+
+@keyframes walkLeftCycle {
+  0% {
+    background-position: 0px -180px;
+  }
+  100% {
+    background-position: -1866.67px -180px;
+  }
+}
