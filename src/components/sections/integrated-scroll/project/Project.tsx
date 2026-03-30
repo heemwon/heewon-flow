@@ -7,6 +7,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import ClientOnly from "@/components/common/ClientOnly";
 import Floor from "@/components/common/Floor";
 import Balloons from "@/components/common/Balloons/Balloons";
 import Car from "./Car/Car";
@@ -90,6 +91,12 @@ export default function Project({ progress }: ProjectProps) {
     }
   );
 
+  const balloonsDisplay = useTransform(
+    progress,
+    [0, 0.88, 0.89, 1],
+    ["none", "none", "block", "block"]
+  );
+
   return (
     <motion.article
       aria-labelledby="projectTitle"
@@ -111,11 +118,13 @@ export default function Project({ progress }: ProjectProps) {
           x: carX,
         }}
       />
-      <FloatingCharacters
-        ref={characterRefs}
-        isVisible={showChars}
-        handleOpenPopup={handleOpenPopup}
-      />
+      <ClientOnly>
+        <FloatingCharacters
+          ref={characterRefs}
+          isVisible={showChars}
+          handleOpenPopup={handleOpenPopup}
+        />
+      </ClientOnly>
       <BookStore
         style={{
           x: bookStoreX,
@@ -129,15 +138,18 @@ export default function Project({ progress }: ProjectProps) {
         }}
       />
 
-      {openPopupIndex !== null && (
-        <ProjectDetail
-          openPopupIndex={openPopupIndex}
-          handleClosePopup={handleClosePopup}
-        />
-      )}
+      <ClientOnly>
+        {openPopupIndex !== null && (
+          <ProjectDetail
+            openPopupIndex={openPopupIndex}
+            handleClosePopup={handleClosePopup}
+          />
+        )}
+      </ClientOnly>
       <Balloons
         style={{
           opacity: balloonsOpacity,
+          display: balloonsDisplay,
         }}
       />
     </motion.article>

@@ -1,6 +1,7 @@
 import { HEADER_DATA } from "@/constants/header";
 import ThemeToggle from "./ThemeToggle";
 import ScrollProgress from "./ScrollProgress";
+import ClientOnly from "../ClientOnly";
 
 export default function Header() {
   return (
@@ -30,7 +31,9 @@ export default function Header() {
           </ul>
         </nav>
       </div>
-      <ScrollProgress />
+      <ClientOnly>
+        <ScrollProgress />
+      </ClientOnly>
     </header>
   );
 }
