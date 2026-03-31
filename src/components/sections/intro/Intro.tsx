@@ -10,7 +10,7 @@ export default function Intro() {
   return (
     <section
       id="intro"
-      className="overflow-hidden relative w-full h-[calc(100vh-49px)] bg-bg-light md:h-[calc(100vh-61px)] dark:bg-brand-primary"
+      className="overflow-hidden relative w-full h-[calc(100vh-61px)] bg-bg-light md:h-[calc(100vh-63px)] dark:bg-brand-primary"
     >
       {/* background */}
       <Stars />
