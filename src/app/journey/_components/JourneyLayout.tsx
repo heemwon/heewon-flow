@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 
 import SkipNav from "@shared/ui/SkipNav";
-import { ThemeProvider } from "./_providers/ThemeProvider";
-import Header from "./_components/Header";
-import Footer from "./_components/Footer";
+import Header from "../_components/Header";
+import Footer from "../_components/Footer";
+import { ThemeProvider } from "../_providers/ThemeProvider";
 
 interface JourneyLayoutProps {
   children: ReactNode;
