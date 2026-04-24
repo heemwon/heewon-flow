@@ -1,22 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import { ThemeProvider } from "@/providers/ThemeProvider";
-import Header from "@/components/common/Header/Header";
-import SkipNav from "@/components/common/SkipNav";
-import Footer from "@/components/common/Footer";
 
-// 폰트 설정
-const pretendard = localFont({
-  src: "./fonts/PretendardVariable.woff2",
-  display: "swap",
-  variable: "--font-pretendard",
-});
-const gmarketSans = localFont({
-  src: "./fonts/GmarketSansBold.woff2",
-  display: "swap",
-  variable: "--font-gmarket",
-});
+import "./globals.css";
+import { gmarketSansBold, pretendard } from "./fonts";
 
 export const metadata: Metadata = {
   title: "LEEHEEWON | Frontend Developer Portfolio",
@@ -102,16 +87,9 @@ export default function RootLayout({
     <html
       lang="ko"
       suppressHydrationWarning
-      className={`${pretendard.variable} ${gmarketSans.variable} antialiased`}
+      className={`${pretendard.variable} ${gmarketSansBold.variable} antialiased`}
     >
-      <body>
-        <ThemeProvider>
-          <SkipNav href="#mainContent" title="본문 바로가기" />
-          <Header />
-          <main id="mainContent">{children}</main>
-          <Footer />
-        </ThemeProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

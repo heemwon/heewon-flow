@@ -20,7 +20,9 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@journey/*": ["./src/app/journey/*"],
+      "@shared/*": ["./src/app/shared/*"]
     }
   },
   "include": [
