@@ -20,6 +20,9 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@design-system/*": ["packages/design-system/src/*"],
+      "@design-system": ["packages/design-system/src/index.ts"],
+
       "@/*": ["./src/*"],
       "@journey/*": ["./src/app/journey/*"],
       "@shared/*": ["./src/app/shared/*"]
