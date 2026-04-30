@@ -1,7 +1,7 @@
 export const checkboxInputClass = "peer appearance-none ";
 
 export const checkboxIconClass =
-  "overflow-hidden inline-block rounded-sm border border-gray-500 cursor-pointer " +
+  "overflow-hidden inline-block rounded-sm border border-gray-500 bg-white cursor-pointer " +
   "peer-focus-visible:ring-2 peer-focus-visible:ring-primary-500 peer-focus-visible:ring-offset-2 " +
   "peer-checked:bg-gray-500 " +
   "peer-disabled:opacity-60 peer-disabled:cursor-not-allowed";

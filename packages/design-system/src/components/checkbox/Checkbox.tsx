@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from "react";
 import clsx from "clsx";
 
-import { CheckBox } from "@design-system/icons/CheckBox";
+import { CheckBoxIcon } from "@design-system/icons/CheckBoxIcon";
 import {
   checkboxIconClass,
   checkboxInputClass,
@@ -28,7 +28,7 @@ export default function Checkbox({
         className={checkboxInputClass}
         {...props}
       />
-      <CheckBox className={clsx(checkboxIconClass)} />
+      <CheckBoxIcon className={clsx(checkboxIconClass)} />
       <span className={clsx(checkboxLabelClass, srOnly && "sr-only")}>
         {label}
       </span>

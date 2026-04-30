@@ -1,8 +1,8 @@
 import type { SVGProps } from "react";
 
-interface CheckBoxProps extends SVGProps<SVGSVGElement> {}
+interface CheckBoxIconProps extends SVGProps<SVGSVGElement> {}
 
-export function CheckBox({ ...props }: CheckBoxProps) {
+export function CheckBoxIcon({ ...props }: CheckBoxIconProps) {
   return (
     <svg
       width="24"
