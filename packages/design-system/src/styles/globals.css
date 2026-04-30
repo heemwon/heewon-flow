@@ -15,12 +15,13 @@
   --color-gray-700: #374151;
   --color-gray-900: #111827;
 
-  --color-state-success: #10b981;
-  --color-state-warning: #f59e0b;
+  --color-state-success: #047857;
+  --color-state-warning: #b45309;
   --color-state-error: #be123c;
-  --color-state-info: #6366f1;
+  --color-state-info: #4338ca;
 
   /* spacing */
+  --spacing-xxxs: 2px;
   --spacing-xxs: 4px;
   --spacing-xs: 8px;
   --spacing-sm: 12px;

@@ -15,9 +15,9 @@ export const colors = {
     900: "#111827",
   },
   state: {
-    success: "#10B981",
-    warning: "#F59E0B",
+    success: "#047857",
+    warning: "#b45309",
     error: "#BE123C",
-    info: "#6366F1",
+    info: "#4338ca",
   },
 } as const;
