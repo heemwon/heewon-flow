@@ -246,6 +246,82 @@ Tailwind class 충돌 방지를 위한 유틸 함수입니다.
 
 ---
 
+## Badge
+
+상태(Status)나 카테고리(Label)를 간결하게 표시하는 컴포넌트입니다.
+
+### Features
+
+- variant 기반 스타일 (success, warning, info 등)
+- 텍스트 기반 의미 전달
+- 선택적 aria-label 지원
+
+### Accessibility
+
+- 색상만으로 의미를 전달하지 않고 텍스트를 함께 제공
+- 필요 시 aria-label로 보조 설명 제공
+
+---
+
+## Checkbox
+
+단일 선택 입력을 위한 체크박스 컴포넌트입니다.
+
+### Features
+
+- native input 기반 구현
+- checked / defaultChecked 지원 (controlled / uncontrolled)
+- label 클릭 영역 확장
+- focus-visible 상태 지원
+
+### Accessibility
+
+- keyboard interaction 지원 (Tab / Space)
+- label 연결
+- peer 기반 상태 스타일링
+
+---
+
+## Table
+
+행과 열 구조의 데이터를 표현하는 컴포넌트입니다.  
+semantic table 구조를 기반으로 접근성과 확장성을 고려해 설계했습니다.
+
+### Features
+
+- compound component 패턴 (`Table.Head`, `Table.Row` 등)
+- caption 지원 (스크린리더용)
+- colgroup 기반 컬럼 width 제어
+- row variant (selected / disabled)
+- empty state 지원
+- skeleton loading 지원
+
+### Accessibility
+
+- semantic table 구조 유지 (thead, tbody, th, td)
+- `scope` 속성 적용
+- `aria-busy`를 통한 로딩 상태 전달
+- skeleton 영역 `aria-hidden` 처리
+
+---
+
+## Loading State (Skeleton)
+
+데이터 로딩 상태를 표현하기 위한 Skeleton 컴포넌트를 제공합니다.
+
+### Features
+
+- 공통 Skeleton 컴포넌트
+- Table.Skeleton 조합 지원
+- animate-pulse 기반 로딩 애니메이션
+
+### Accessibility
+
+- skeleton 요소는 `aria-hidden` 처리
+- 상위 영역에서 `aria-busy` 상태 관리
+
+---
+
 <br />
 
 ## What I Focused On
