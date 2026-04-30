@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { ElementType, ComponentPropsWithoutRef, ReactNode } from "react";
 
 import {
@@ -6,6 +5,7 @@ import {
   buttonSizeClass,
   buttonVariantClass,
 } from "./button.styles";
+import { cn } from "@design-system/lib/cn";
 
 type ButtonOwnProps = {
   variant?: "primary" | "secondary" | "ghost" | "danger";
@@ -29,10 +29,10 @@ export default function Button<T extends ElementType = "button">({
 
   return (
     <Component
-      className={clsx(
+      className={cn(
         buttonBaseClass,
-        buttonVariantClass[variant],
         buttonSizeClass[size],
+        buttonVariantClass[variant],
         className
       )}
       {...props}

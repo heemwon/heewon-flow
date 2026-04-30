@@ -98,7 +98,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-*:focus-visible:not(input) {
+*:focus-visible:not(input):not(div) {
   outline: 2px solid var(--color-primary-500);
   outline-offset: 2px;
 }

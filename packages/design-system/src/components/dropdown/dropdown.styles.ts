@@ -8,7 +8,7 @@ export const dropdownIconClass = "transition-transform";
 export const dropdownIconIsOpenClass = "rotate-180";
 
 export const dropdownListClass =
-  "overflow-hidden absolute top-[76px] w-full border border-gray-200 rounded-sm divide-y divide-gray-200";
+  "overflow-hidden absolute top-[76px] z-1 w-full border border-gray-200 rounded-sm divide-y divide-gray-200";
 
 export const dropdownOptionClass =
   "p-sm w-full text-left text-body-lg text-gray-900 bg-white truncate " +
