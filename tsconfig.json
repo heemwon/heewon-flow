@@ -25,7 +25,8 @@
 
       "@/*": ["./src/*"],
       "@journey/*": ["./src/app/journey/*"],
-      "@shared/*": ["./src/app/shared/*"]
+      "@shared/*": ["./src/app/shared/*"],
+      "@features/*": ["./src/app/features/*"]
     }
   },
   "include": [

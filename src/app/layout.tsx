@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
 import { gmarketSansBold, pretendard } from "./fonts";
+import Providers from "@/providers/providers";
 
 export const metadata: Metadata = {
   title: "LEEHEEWON | Frontend Developer Portfolio",
@@ -89,7 +90,9 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${pretendard.variable} ${gmarketSansBold.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

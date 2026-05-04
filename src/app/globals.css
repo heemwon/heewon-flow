@@ -1,5 +1,6 @@
 /* globals.css */
 @import "tailwindcss";
+@import "../../packages/design-system/src/styles/globals.css";
 @source "../../components/**/*.{ts,tsx}";
 @source "../../app/**/*.{ts,tsx}";
 

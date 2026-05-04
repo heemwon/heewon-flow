@@ -1,4 +1,4 @@
-import { cn } from "@shared/utils/cn";
+import { cn } from "@design-system/lib/cn";
 
 interface SkipNavProps {
   href: string;
