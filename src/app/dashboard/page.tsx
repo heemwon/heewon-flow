@@ -1,13 +1,29 @@
-"use client";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 
-import DashboardPage from "@/features/dashboard";
-import { useSession } from "../shared/hooks/useSession";
+import Dashboard from "@/features/dashboard";
+import { getDashboardData } from "@/features/dashboard/api/dashboard.api";
+import { getSessionUser } from "../shared/api/session.api";
 
-export default function Dashboard() {
-  const { data } = useSession();
-  const userId = data?.userId;
+export default async function Page() {
+  const queryClient = new QueryClient();
 
-  if (!userId) return null;
+  const userSession = await getSessionUser();
+  const isLogined = !!userSession?.userId;
 
-  return <DashboardPage userId={userId} />;
+  if (isLogined) {
+    await queryClient.prefetchQuery({
+      queryKey: ["dashboard", "detail", userSession.userId],
+      queryFn: getDashboardData,
+    });
+  }
+
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Dashboard initialUserId={userSession?.userId} />
+    </HydrationBoundary>
+  );
 }

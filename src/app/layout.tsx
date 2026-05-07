@@ -87,7 +87,6 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      suppressHydrationWarning
       className={`${pretendard.variable} ${gmarketSansBold.variable} antialiased`}
     >
       <body>

@@ -3,14 +3,13 @@
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
-import { headerBaseClass, headerWideClass } from "./header.styles";
+import { useSidebarOpen } from "store/useSidebarStore";
+
 import { formatPathnameToTitle } from "@/lib/formatPathname";
+import { headerBaseClass, headerWideClass } from "./header.styles";
 
-interface HeaderProps {
-  isOpen: boolean;
-}
-
-export default function Header({ isOpen }: HeaderProps) {
+export default function Header() {
+  const isOpen = useSidebarOpen();
   const pathname = usePathname();
   const pageName = formatPathnameToTitle(pathname);
 

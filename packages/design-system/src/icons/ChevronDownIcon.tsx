@@ -15,8 +15,8 @@ export function ChevronDownIcon({ ...props }: ChevronDownIconProps) {
       <path
         d="M3 6L7.64213 11M12.5 6L7.88951 11"
         stroke="#6B7280"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
     </svg>
   );

@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
 
-import { sectionBaseClass, sectionTitleClass } from "./section.styles";
 import { cn } from "@design-system/lib/cn";
+import { sectionBaseClass, sectionTitleClass } from "./section.styles";
 
 interface SectionProps {
   id: string;

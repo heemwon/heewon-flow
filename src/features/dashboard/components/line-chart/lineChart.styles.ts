@@ -1,1 +1,1 @@
-export const lineChartBaseClass = "w-full h-full";
+export const lineChartBaseClass = "w-full h-[240px] ";

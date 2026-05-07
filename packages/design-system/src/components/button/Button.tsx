@@ -7,25 +7,24 @@ import {
 } from "./button.styles";
 import { cn } from "@design-system/lib/cn";
 
-type ButtonOwnProps = {
+type ButtonOwnProps<T extends ElementType> = {
   variant?: "primary" | "secondary" | "ghost" | "danger";
   size?: "sm" | "md" | "lg";
-  as?: ElementType;
+  as?: T;
   children: ReactNode;
 };
-
-type ButtonProps<T extends ElementType> = ButtonOwnProps &
-  Omit<ComponentPropsWithoutRef<T>, keyof ButtonOwnProps>;
+type ButtonProps<T extends ElementType> = ButtonOwnProps<T> &
+  Omit<ComponentPropsWithoutRef<T>, keyof ButtonOwnProps<T>>;
 
 export default function Button<T extends ElementType = "button">({
   variant = "primary",
   size = "md",
   className,
-  as = "button",
+  as,
   children,
   ...props
 }: ButtonProps<T>) {
-  const Component = as || "button";
+  const Component: ElementType = as || "button";
 
   return (
     <Component

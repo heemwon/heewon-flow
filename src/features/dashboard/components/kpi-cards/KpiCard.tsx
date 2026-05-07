@@ -9,33 +9,33 @@ import {
 } from "./kpiCards.styles";
 
 interface KpiCardProps {
-  data: DashboardKpi;
+  data?: DashboardKpi;
   isLoading: boolean;
 }
 
 export default function KpiCard({ data, isLoading }: KpiCardProps) {
-  const { title, value, change, trend, description } = data;
+  if (isLoading) {
+    return (
+      <li className={kpiCardBaseClass}>
+        <Skeleton className="w-[38px] h-[18px]" />
+        <Skeleton className="w-full h-[28px]" />
+        <span className={kpiCardDescBaseClass}>
+          <Skeleton className="w-full h-[16px]" />
+        </span>
+      </li>
+    );
+  }
+
+  if (!data) return null;
 
   return (
     <li className={kpiCardBaseClass}>
-      {isLoading ? (
-        <>
-          <Skeleton className="w-xxl h-xxl" />
-          <Skeleton className="w-full h-xl" />
-          <span className={kpiCardDescBaseClass}>
-            <Skeleton className="w-full h-md" />
-          </span>
-        </>
-      ) : (
-        <>
-          <em className={kpiCardTitleBaseClass}>{title}</em>
-          <strong className={kpiCardValueBaseClass}>{value}</strong>
-          <span className={kpiCardDescBaseClass}>
-            {description}
-            <span className={kpiCardChangeClass[trend]}>{change}</span>
-          </span>
-        </>
-      )}
+      <em className={kpiCardTitleBaseClass}>{data.title}</em>
+      <strong className={kpiCardValueBaseClass}>{data.value}</strong>
+      <span className={kpiCardDescBaseClass}>
+        {data.description}
+        <span className={kpiCardChangeClass[data.trend]}>{data.change}</span>
+      </span>
     </li>
   );
 }

@@ -9,6 +9,7 @@ export interface DashboardKpi {
   description: string;
 }
 
+export type DashboardChartPeriod = "7d" | "30d";
 export interface DashboardChartPoint {
   label: string;
   revenue: number;
@@ -38,7 +39,7 @@ export interface DashboardActivity {
 
 export interface DashboardData {
   kpis: DashboardKpi[];
-  chart: DashboardChartPoint[];
+  chart: Record<DashboardChartPeriod, DashboardChartPoint[]>;
   recentUsers: RecentUser[];
   activities: DashboardActivity[];
 }

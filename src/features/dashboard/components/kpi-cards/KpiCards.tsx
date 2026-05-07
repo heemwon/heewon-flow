@@ -8,10 +8,14 @@ interface KpiCardsProps {
 }
 
 export default function KpiCards({ data, isLoading }: KpiCardsProps) {
+  const items: DashboardKpi[] | [] = isLoading
+    ? Array.from({ length: 4 })
+    : data;
+
   return (
     <ul className={kpiCardsBaseClass}>
-      {data.map((card) => (
-        <KpiCard key={card.id} isLoading={isLoading} data={card} />
+      {items.map((card, index) => (
+        <KpiCard key={card?.id ?? index} isLoading={isLoading} data={card} />
       ))}
     </ul>
   );

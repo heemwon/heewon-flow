@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+import { useSidebarActions, useSidebarOpen } from "store/useSidebarStore";
 import { SideMenuIcon } from "@/icons/SideMenuIcon";
 import IconButton from "@design-system/components/icon-button/IconButton";
 import {
@@ -19,13 +20,10 @@ import {
 import { MENU_LIST } from "./sidebar.constants";
 import { cn } from "@design-system/lib/cn";
 
-interface SidebarProps {
-  isOpen: boolean;
-  handleSidebar: () => void;
-}
-
-export default function Sidebar({ isOpen, handleSidebar }: SidebarProps) {
+export default function Sidebar() {
   const pathname = usePathname();
+  const isOpen = useSidebarOpen();
+  const { toggleSidebar } = useSidebarActions();
 
   return (
     <aside className={sidebarBaseClass}>
@@ -34,7 +32,7 @@ export default function Sidebar({ isOpen, handleSidebar }: SidebarProps) {
       >
         <IconButton
           label={`사이드 메뉴 ${isOpen ? "닫기" : "열기"}`}
-          onClick={handleSidebar}
+          onClick={toggleSidebar}
           className={sidebarToggleButtonClass}
         >
           <SideMenuIcon />

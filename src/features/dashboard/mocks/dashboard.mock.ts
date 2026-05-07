@@ -36,15 +36,26 @@ export const dashboardMock: DashboardData = {
     },
   ],
 
-  chart: [
-    { label: "Mon", revenue: 120, users: 320 },
-    { label: "Tue", revenue: 180, users: 410 },
-    { label: "Wed", revenue: 150, users: 380 },
-    { label: "Thu", revenue: 220, users: 520 },
-    { label: "Fri", revenue: 260, users: 610 },
-    { label: "Sat", revenue: 210, users: 480 },
-    { label: "Sun", revenue: 300, users: 690 },
-  ],
+  chart: {
+    "7d": [
+      { label: "Sun", revenue: 300, users: 690 },
+      { label: "Mon", revenue: 120, users: 320 },
+      { label: "Tue", revenue: 180, users: 410 },
+      { label: "Wed", revenue: 150, users: 380 },
+      { label: "Thu", revenue: 220, users: 520 },
+      { label: "Fri", revenue: 260, users: 610 },
+      { label: "Sat", revenue: 210, users: 480 },
+    ],
+    "30d": [
+      { label: "Sun", revenue: 200, users: 410 },
+      { label: "Mon", revenue: 320, users: 300 },
+      { label: "Tue", revenue: 80, users: 280 },
+      { label: "Wed", revenue: 100, users: 300 },
+      { label: "Thu", revenue: 120, users: 450 },
+      { label: "Fri", revenue: 240, users: 240 },
+      { label: "Sat", revenue: 110, users: 400 },
+    ],
+  },
 
   recentUsers: [
     {
