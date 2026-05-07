@@ -11,6 +11,7 @@ import Section from "@/components/layout/section/Section";
 import { useSession } from "@/app/shared/hooks/useSession";
 import KpiCards from "./components/kpi-cards/KpiCards";
 import Activities from "./components/activities/Activities";
+import UserTable from "./components/user-table/UserTable";
 import { useDashboardData } from "./hooks/useDashboardData";
 import { PERIOD_OPTIONS } from "./constants/period";
 import { DashboardChartPeriod } from "./types/dashboard.types";
@@ -92,6 +93,23 @@ export default function Dashboard({ initialUserId }: DashboardProps) {
           />
         </Section>
       </div>
+
+      <Section id="dashboard-users" title="최근 사용자" className="w-full">
+        <div>
+          <Button
+            variant="secondary"
+            size="sm"
+            as={Link}
+            href="/dashboard/users"
+          >
+            전체 보기
+          </Button>
+        </div>
+        <UserTable
+          isLoading={isDashboardLoading}
+          data={data?.recentUsers ?? []}
+        />
+      </Section>
     </>
   );
 }
