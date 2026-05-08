@@ -1,3 +1,4 @@
+import { userMock } from "@/features/users/mocks/user.mock";
 import type { DashboardData } from "../types/dashboard.types";
 
 export const dashboardMock: DashboardData = {
@@ -57,32 +58,7 @@ export const dashboardMock: DashboardData = {
     ],
   },
 
-  recentUsers: [
-    {
-      id: "user-1",
-      name: "이희원",
-      email: "heewon@example.com",
-      role: "Admin",
-      status: "active",
-      joinedAt: "2026.05.01",
-    },
-    {
-      id: "user-2",
-      name: "양정원",
-      email: "jeongwon@example.com",
-      role: "Editor",
-      status: "pending",
-      joinedAt: "2026.04.29",
-    },
-    {
-      id: "user-3",
-      name: "박재찬",
-      email: "jaechan@example.com",
-      role: "Viewer",
-      status: "blocked",
-      joinedAt: "2026.04.26",
-    },
-  ],
+  recentUsers: userMock.slice(0, 4),
 
   activities: [
     {

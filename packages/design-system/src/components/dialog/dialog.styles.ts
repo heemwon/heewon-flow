@@ -1,5 +1,5 @@
 export const dialogOverlayClass =
-  "w-full h-screen flex items-center justify-center bg-gray-900/40 ";
+  "z-500 w-full h-screen flex items-center justify-center bg-gray-900/40 ";
 
 export const dialogPanelClass =
   "relative z-0 flex flex-col gap-md px-lg pt-lg pb-xxxl w-[420px] rounded-lg bg-white shadow-modal " +

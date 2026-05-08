@@ -127,7 +127,7 @@ function TableSkeleton({ rows = 5, columns = 4 }: TableSkeletonProps) {
         <tr key={rowIndex}>
           {Array.from({ length: columns }).map((_, colIndex) => (
             <td key={colIndex} className={tableCellClass}>
-              <Skeleton className="h-xs w-full" />
+              <Skeleton className="h-sm w-full" />
             </td>
           ))}
         </tr>

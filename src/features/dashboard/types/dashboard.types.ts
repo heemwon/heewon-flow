@@ -1,3 +1,5 @@
+import { User } from "@/features/users/types/user.types";
+
 export type KpiTrend = "increase" | "decrease" | "neutral";
 
 export interface DashboardKpi {
@@ -16,17 +18,6 @@ export interface DashboardChartPoint {
   users: number;
 }
 
-export type UserStatus = "active" | "pending" | "blocked";
-
-export interface RecentUser {
-  id: string;
-  name: string;
-  email: string;
-  role: "Admin" | "Editor" | "Viewer";
-  status: UserStatus;
-  joinedAt: string;
-}
-
 export type ActivityType = "user" | "payment" | "system";
 
 export interface DashboardActivity {
@@ -40,6 +31,6 @@ export interface DashboardActivity {
 export interface DashboardData {
   kpis: DashboardKpi[];
   chart: Record<DashboardChartPeriod, DashboardChartPoint[]>;
-  recentUsers: RecentUser[];
+  recentUsers: User[];
   activities: DashboardActivity[];
 }

@@ -1,7 +1,5 @@
-import {
-  ActivityType,
-  UserStatus,
-} from "@/features/dashboard/types/dashboard.types";
+import type { ActivityType } from "@/features/dashboard/types/dashboard.types";
+import type { UserStatus } from "@/features/users/types/user.types";
 
 export const formatBadge = (type: ActivityType | UserStatus) => {
   switch (type) {
