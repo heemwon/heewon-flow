@@ -1,5 +1,5 @@
 import Badge from "@design-system/components/badge/Badge";
-import { formatBadge } from "@/lib/formatBadge";
+import { formatBadge } from "@/features/dashboard/mappers/formatBadge";
 import { User } from "../../types/user.types";
 import {
   detailDialogTitleBaseClass,

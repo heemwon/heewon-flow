@@ -140,7 +140,11 @@ export default function Dropdown({
       </button>
 
       {isOpen && (
-        <ul id={listboxId} role="listbox" className={dropdownListClass}>
+        <ul
+          id={listboxId}
+          role="listbox"
+          className={clsx(dropdownListClass, !srOnly && "top-[76px] ")}
+        >
           {options.map((option) => {
             const isSelected = option.value === selectedValue;
 

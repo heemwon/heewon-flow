@@ -10,7 +10,7 @@ import TextField from "@design-system/components/text-field/TextField";
 import Dropdown from "@design-system/components/dropdown/Dropdown";
 import { MoreDotIcon } from "@design-system/icons/MoreDotIcon";
 import Section from "@/components/layout/section/Section";
-import { formatBadge } from "@/lib/formatBadge";
+import { formatBadge } from "@/features/dashboard/mappers/formatBadge";
 import useDebounce from "@/app/shared/hooks/useDebounce";
 import UserTable, { RowCell } from "../users/components/UserTable";
 import type { User, UserStatusUi } from "../users/types/user.types";

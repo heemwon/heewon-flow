@@ -1,7 +1,8 @@
-export const sidebarBaseClass = "flex flex-col w-[282px] ";
+export const sidebarBaseClass =
+  "flex flex-col sticky top-0 left-0 z-100 w-[282px] h-screen ";
 
 export const sidebarToggleClass =
-  "flex items-center justify-end sticky top-0 left-0 z-100 px-sm h-[64px] w-full border-r border-gray-200 bg-white transition-all ";
+  "flex items-center justify-end px-sm h-[64px] w-full border-r border-gray-200 bg-white transition-all ";
 export const sidebarToggleHideClass =
   "border-b rounded-br-sm -translate-x-[calc(100%-64px)] backdrop-blur-md ";
 

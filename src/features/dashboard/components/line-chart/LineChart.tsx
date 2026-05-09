@@ -7,9 +7,9 @@ import type { Options, SeriesOptionsType } from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 import Skeleton from "@design-system/components/skeleton/Skeleton";
-import { formatChart } from "@/lib/formatChart";
 import { DashboardChartPoint } from "../../types/dashboard.types";
 import { lineChartBaseClass } from "./lineChart.styles";
+import { formatChart } from "../../mappers/formatChart";
 
 interface LineChartProps {
   data: DashboardChartPoint[];

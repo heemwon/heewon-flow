@@ -1,6 +1,6 @@
 import Badge from "@design-system/components/badge/Badge";
 import Skeleton from "@design-system/components/skeleton/Skeleton";
-import { formatBadge } from "@/lib/formatBadge";
+import { formatBadge } from "@/features/dashboard/mappers/formatBadge";
 import { DashboardActivity } from "../../types/dashboard.types";
 import {
   activitiesBaseClass,

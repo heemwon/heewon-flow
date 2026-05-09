@@ -10,7 +10,7 @@ import Skeleton from "@design-system/components/skeleton/Skeleton";
 import Badge from "@design-system/components/badge/Badge";
 import Section from "@/components/layout/section/Section";
 import { useSession } from "@/app/shared/hooks/useSession";
-import { formatBadge } from "@/lib/formatBadge";
+import { formatBadge } from "@/features/dashboard/mappers/formatBadge";
 import KpiCards from "./components/kpi-cards/KpiCards";
 import Activities from "./components/activities/Activities";
 import { useDashboardData } from "./hooks/useDashboardData";
@@ -98,17 +98,6 @@ export default function Dashboard({ initialUserId }: DashboardProps) {
           title="최근 활동"
           className="p-md bg-white rounded-md border border-gray-200"
         >
-          <div>
-            <Button
-              variant="secondary"
-              size="sm"
-              as={Link}
-              href="/dashboard/activities"
-            >
-              전체 보기
-            </Button>
-          </div>
-
           <Activities
             data={data?.activities ?? []}
             isLoading={isDashboardLoading}

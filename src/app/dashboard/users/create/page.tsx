@@ -5,9 +5,9 @@ import {
 } from "@tanstack/react-query";
 
 import { getUserData } from "@/features/users/api/user.api";
-import Users from "@/features/users";
+import CreateUser from "@/features/create-user";
 
-export default async function UsersPage() {
+export default async function CreateUsersPage() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
@@ -17,7 +17,7 @@ export default async function UsersPage() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <Users />
+      <CreateUser />
     </HydrationBoundary>
   );
 }

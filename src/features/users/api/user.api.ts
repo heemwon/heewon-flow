@@ -17,6 +17,7 @@ export async function getUserData(params: Params = {}): Promise<User[]> {
 
   if (search) {
     const lowerSearch = search.toLowerCase();
+
     filteredData = filteredData.filter(
       (user) =>
         user.name.toLowerCase().includes(lowerSearch) ||
@@ -31,10 +32,16 @@ export async function getUserData(params: Params = {}): Promise<User[]> {
   return filteredData;
 }
 
+export async function createUser(payload: User): Promise<User> {
+  await new Promise((resolve) => setTimeout(resolve, 400));
+
+  memoryUsers = [payload, ...memoryUsers];
+
+  return payload;
+}
+
 export async function deleteUsers(userIds: string[]): Promise<void> {
   await new Promise((resolve) => setTimeout(resolve, 400));
 
   memoryUsers = memoryUsers.filter((user) => !userIds.includes(user.id));
-
-  console.log("Mock DB 업데이트 완료:", memoryUsers.length);
 }

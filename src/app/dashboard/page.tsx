@@ -8,7 +8,7 @@ import Dashboard from "@/features/dashboard";
 import { getDashboardData } from "@/features/dashboard/api/dashboard.api";
 import { getSessionUser } from "../shared/api/session.api";
 
-export default async function Page() {
+export default async function DashboardPage() {
   const queryClient = new QueryClient();
 
   const userSession = await getSessionUser();

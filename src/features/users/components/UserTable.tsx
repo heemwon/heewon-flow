@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import { cn } from "@design-system/lib/cn";
 import { Table } from "@design-system/components/table/Table";
+import { getToday } from "@design-system/lib/date";
 import { User } from "../types/user.types";
 
 export interface RowCell<T> {
@@ -29,6 +30,12 @@ export default function UserTable({
 }: UserTableProps) {
   const isEmpty = !isLoading && data?.length === 0;
 
+  const isNewUser = (date: string) => {
+    const today = getToday();
+
+    return date === today;
+  };
+
   return (
     <Table
       isLoading={isLoading}
@@ -55,7 +62,10 @@ export default function UserTable({
               </Table.Row>
             ) : (
               data.map((user) => (
-                <Table.Row key={user.id}>
+                <Table.Row
+                  key={user.id}
+                  className={isNewUser(user.joinedAt) ? "bg-primary-100 " : ""}
+                >
                   {rowCell.map((cell) => (
                     <Table.Cell
                       key={cell.header}
