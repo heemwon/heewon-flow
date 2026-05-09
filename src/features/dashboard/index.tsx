@@ -11,15 +11,15 @@ import Badge from "@design-system/components/badge/Badge";
 import Section from "@/components/layout/section/Section";
 import { useSession } from "@/app/shared/hooks/useSession";
 import { formatBadge } from "@/features/dashboard/mappers/formatBadge";
-import KpiCards from "./components/kpi-cards/KpiCards";
-import Activities from "./components/activities/Activities";
+import KpiCards from "./components/kpi-cards";
+import Activities from "./components/activities";
 import { useDashboardData } from "./hooks/useDashboardData";
 import { PERIOD_OPTIONS } from "./constants/period";
 import { DashboardChartPeriod } from "./types/dashboard.types";
 import UserTable, { RowCell } from "../users/components/UserTable";
 import type { User } from "../users/types/user.types";
 
-const LineChart = dynamic(() => import("./components/line-chart/LineChart"), {
+const LineChart = dynamic(() => import("./components/line-chart"), {
   ssr: false,
   loading: () => <Skeleton className="w-full h-[240px]" aria-hidden="true" />,
 });
