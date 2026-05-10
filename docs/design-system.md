@@ -11,6 +11,13 @@ SaaS 관리자(Admin) 대시보드를 위한 디자인 시스템입니다.
 
 SaaS Admin 대시보드를 위한 디자인 시스템입니다.
 
+이 프로젝트는 단순 UI 컴포넌트 모음이 아니라,  
+디자인 시스템 → 컴포넌트 → 문서화까지 연결되는 구조를 목표로 설계했습니다.
+
+Figma 기반 와이어프레임과 컴포넌트 구조를 직접 설계한 뒤,
+Design Token 기반 스타일 구조와 Storybook 문서화를 연결해
+일관된 사용자 경험과 유지보수 가능한 UI 시스템을 구축했습니다.
+
 - Design Token 기반 스타일 구조
 - 접근성(A11y) 고려한 컴포넌트 설계
 - Compound Pattern (Table, Dialog) 적용
@@ -20,7 +27,36 @@ SaaS Admin 대시보드를 위한 디자인 시스템입니다.
 
 ## Figma
 
-[디자인 시스템 가이드 및 컴포넌트 설계 문서](https://www.figma.com/design/gZeYjMdOmNZzv2srOaN0Ud/Design-System?node-id=0-1&t=gVKNseF3DsZHbz2F-1)
+디자인 토큰, 컴포넌트 Variant, 와이어프레임 구조까지 직접 설계했습니다.
+
+- Color / Typography / Spacing Token 정의
+- Button / Input / Dialog 등 상태 기반 Variant 설계
+- SaaS Admin 대시보드 와이어프레임 구성
+- 구현 전 컴포넌트 재사용 구조 우선 설계
+
+### Design System
+
+- [Figma Design System](https://www.figma.com/design/gZeYjMdOmNZzv2srOaN0Ud/Design-System?node-id=0-1&t=gVKNseF3DsZHbz2F-1)
+
+---
+
+## Design Preview
+
+### Token System
+
+![Token System](./images/token-system.png)
+
+---
+
+### Component
+
+![Component](./images/component.png)
+
+---
+
+### Admin Wireframe
+
+![Admin Wireframe](./images/admin-wireframe.png)
 
 ---
 
@@ -76,6 +112,22 @@ primary-600
 ### 4. Scalable Structure
 
 Dialog / Table / Form 등 확장 가능한 구조로 설계했습니다.
+
+---
+
+### 5. Design ↔ Frontend Alignment
+
+디자인 단계에서 정의한 Token / Variant 구조를
+실제 컴포넌트 아키텍처와 연결하는 데 집중했습니다.
+
+Figma에서 정의한 구조를 기반으로:
+
+- semantic token
+- component variant
+- state pattern
+- Storybook documentation
+
+까지 일관된 흐름으로 관리할 수 있도록 설계했습니다.
 
 ---
 
@@ -186,10 +238,12 @@ packages/design-system/src
 
 ## What I Focused On
 
-- 디자인 토큰 → 컴포넌트 → 문서화 흐름 설계
-- 유지보수 가능한 구조
-- 접근성 기본기 반영
-- 상황별 컴포넌트 패턴 적용
+- Design Token → Component → Documentation 흐름 설계
+- Figma 기반 UI 구조와 실제 컴포넌트 구조 연결
+- semantic token 기반 유지보수 가능한 스타일 시스템 구성
+- Compound Pattern 기반 확장 가능한 컴포넌트 설계
+- 접근성과 keyboard interaction을 고려한 인터랙션 구현
+- Storybook 기반 문서화 및 컴포넌트 탐색 환경 구성
 
 ---
 
