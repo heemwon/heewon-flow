@@ -1,4 +1,3 @@
-import JourneyLayout from "./_components/JourneyLayout";
 import ContactSection from "./_sections/ContactSection";
 import IntegratedScroll from "./_sections/IntegratedScroll";
 import IntroOnboardingSection from "./_sections/IntroOnboardingSection";
@@ -7,7 +6,7 @@ import OthersSection from "./_sections/OthersSection";
 
 export default function JourneyPage() {
   return (
-    <JourneyLayout>
+    <>
       <IntroSection />
       <IntroOnboardingSection />
 
@@ -16,6 +15,6 @@ export default function JourneyPage() {
 
       <OthersSection />
       <ContactSection />
-    </JourneyLayout>
+    </>
   );
 }

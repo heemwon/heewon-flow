@@ -1,5 +1,5 @@
-import JourneyPage from "@journey/page";
+import HomePage from "./home/page";
 
-export default function Home() {
-  return <JourneyPage />;
+export default function Page() {
+  return <HomePage />;
 }
