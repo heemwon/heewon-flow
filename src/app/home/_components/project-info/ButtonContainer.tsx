@@ -21,7 +21,7 @@ export default function ButtonContainer({ button }: ButtonContainerProps) {
       </Button>
       <Button
         as="a"
-        href="https://github.com/heemwon/my-walking-portfolio"
+        href="https://github.com/heemwon/heewon-flow"
         variant="secondary"
         target="_blank"
       >

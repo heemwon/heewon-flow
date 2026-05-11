@@ -27,11 +27,11 @@ export const metadata: Metadata = {
     description:
       "검색 debounce, 상태 필터링, Dialog, Form Validation, Settings 관리 기능을 구현한 관리자 대시보드 프로젝트입니다.",
 
-    url: "https://my-walking-portfolio.vercel.app/dashboard",
+    url: "https://heewon-flow.vercel.app/dashboard",
   },
 
   alternates: {
-    canonical: "https://my-walking-portfolio.vercel.app/dashboard",
+    canonical: "https://heewon-flow.vercel.app/dashboard",
   },
 };
 

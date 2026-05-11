@@ -15,5 +15,5 @@ export const CONTACT_DATA: Contact = {
   },
   tel: "010-9918-6603",
   email: "heemwon@gmail.com",
-  github: "https://github.com/heemwon/my-walking-portfolio",
+  github: "https://github.com/heemwon/heewon-flow",
 };

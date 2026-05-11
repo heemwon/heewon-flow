@@ -5,7 +5,7 @@ import { gmarketSansBold, pretendard } from "./fonts";
 import Providers from "@/providers/providers";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://my-walking-portfolio.vercel.app"),
+  metadataBase: new URL("https://heewon-flow.vercel.app"),
 
   title: {
     default: "Frontend Engineer Portfolio",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://my-walking-portfolio.vercel.app",
+    url: "https://heewon-flow.vercel.app",
     siteName: "이희원 포트폴리오",
 
     title: "이희원 | Frontend Engineer Portfolio",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://my-walking-portfolio.vercel.app",
+    canonical: "https://heewon-flow.vercel.app",
   },
 };
 

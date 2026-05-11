@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://my-walking-portfolio.vercel.app/sitemap.xml",
+    sitemap: "https://heewon-flow.vercel.app/sitemap.xml",
   };
 }

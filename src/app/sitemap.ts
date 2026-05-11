@@ -3,15 +3,15 @@ import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://my-walking-portfolio.vercel.app",
+      url: "https://heewon-flow.vercel.app",
       lastModified: new Date(),
     },
     {
-      url: "https://my-walking-portfolio.vercel.app/journey",
+      url: "https://heewon-flow.vercel.app/journey",
       lastModified: new Date(),
     },
     {
-      url: "https://my-walking-portfolio.vercel.app/dashboard",
+      url: "https://heewon-flow.vercel.app/dashboard",
       lastModified: new Date(),
     },
   ];

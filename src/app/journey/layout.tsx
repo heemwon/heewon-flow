@@ -29,11 +29,11 @@ export const metadata: Metadata = {
     description:
       "Sticky Horizontal Scroll, Portal Layering, 접근성을 고려한 인터랙션 포트폴리오 프로젝트입니다.",
 
-    url: "https://my-walking-portfolio.vercel.app/journey",
+    url: "https://heewon-flow.vercel.app/journey",
   },
 
   alternates: {
-    canonical: "https://my-walking-portfolio.vercel.app/journey",
+    canonical: "https://heewon-flow.vercel.app/journey",
   },
 };
 
