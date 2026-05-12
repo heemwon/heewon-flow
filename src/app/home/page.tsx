@@ -1,3 +1,4 @@
+import Intro from "./_components/intro";
 import HomeLayout from "./_components/layout";
 import ProjectInfo from "./_components/project-info";
 import ProjectPreview from "./_components/project-preview";
@@ -6,6 +7,8 @@ import { PROJECT_LIST } from "./_constants/projects";
 export default function HomePage() {
   return (
     <HomeLayout>
+      <Intro />
+
       {PROJECT_LIST.map((project) => (
         <div
           key={project.title}

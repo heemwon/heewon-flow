@@ -12,7 +12,7 @@ export default function Title({ index, title }: TitleProps) {
   return (
     <>
       <span className={projectInfoSubTitleClass}>{`Project ${index}`}</span>
-      <h2 className={projectInfoTitleClass}>{title}</h2>
+      <h3 className={projectInfoTitleClass}>{title}</h3>
     </>
   );
 }
