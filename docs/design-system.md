@@ -62,7 +62,7 @@ Design Token 기반 스타일 구조와 Storybook 문서화를 연결해
 
 ## Storybook
 
-컴포넌트 문서 및 테스트 환경
+디자인 토큰, 컴포넌트 Variant, 접근성(A11y) 구조를 문서화하고 탐색할 수 있는 환경입니다.
 
 ### Includes
 
@@ -70,6 +70,10 @@ Design Token 기반 스타일 구조와 Storybook 문서화를 연결해
 - Docs
 - Accessibility Addon
 - Foundation Token Docs
+
+### Preview
+
+- [Storybook](https://heewon-storybook.vercel.app/)
 
 ```bash
 npm run storybook
