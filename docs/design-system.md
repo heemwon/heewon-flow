@@ -253,9 +253,7 @@ packages/design-system/src
 
 ## Next Step
 
-- Form validation
 - Toast / Snackbar
-- Animation
 - Dark mode
 - 테스트 코드
 
