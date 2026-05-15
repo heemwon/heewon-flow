@@ -33,7 +33,11 @@ export default function SuccessDialog({
       </Dialog.Body>
 
       <Dialog.Footer>
-        <Button className="w-[120px]" variant="primary" onClick={onClose}>
+        <Button
+          className="w-full md:w-[120px]"
+          variant="primary"
+          onClick={onClose}
+        >
           확인
         </Button>
       </Dialog.Footer>

@@ -41,6 +41,7 @@ export default function UserTable({
       isLoading={isLoading}
       caption={isEmpty ? "데이터가 없는 테이블" : caption}
       columns={columns}
+      className="min-w-[800px] "
     >
       {isLoading ? (
         <Table.Skeleton columns={colLength} rows={5} />

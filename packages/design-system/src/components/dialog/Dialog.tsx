@@ -1,16 +1,11 @@
-import {
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  type HTMLAttributes,
-  type ReactNode,
-  useCallback,
-} from "react";
+import { useRef, type HTMLAttributes, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import clsx from "clsx";
 
 import { cn } from "@design-system/lib/cn";
 import { XIcon } from "@design-system/icons/XIcon";
+import { useFocusTrap } from "@design-system/hooks/useFocusTrap";
+import { useBodyScrollLock } from "@design-system/hooks/useBodyScrollLock";
 import IconButton from "../icon-button/IconButton";
 import {
   dialogCloseButtonClass,
@@ -57,69 +52,14 @@ function DialogRoot({
   ...props
 }: DialogProps) {
   const panelRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLElement | null>(null);
 
-  useLayoutEffect(() => {
-    if (!isOpen) return;
-    triggerRef.current = document.activeElement as HTMLElement;
-    panelRef.current?.focus();
+  useFocusTrap({
+    isOpen,
+    containerRef: panelRef,
+    onClose,
+  });
 
-    return () => {
-      triggerRef.current?.focus();
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = "hidden";
-    document.body.style.scrollbarGutter = "stable";
-
-    return () => {
-      document.body.style.overflow = originalStyle;
-      document.body.style.scrollbarGutter = "auto";
-    };
-  }, [isOpen]);
-
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
-
-      if (event.key !== "Tab") return;
-
-      const panel = panelRef.current;
-      if (!panel) return;
-
-      const focusableElements = getFocusableElements(panel);
-      if (focusableElements.length === 0) {
-        event.preventDefault();
-        panel.focus();
-        return;
-      }
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      if (event.shiftKey && document.activeElement === firstElement) {
-        event.preventDefault();
-        lastElement.focus();
-      } else if (!event.shiftKey && document.activeElement === lastElement) {
-        event.preventDefault();
-        firstElement.focus();
-      }
-    },
-    [onClose]
-  );
-
-  useEffect(() => {
-    if (!isOpen) return;
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, handleKeyDown]);
+  useBodyScrollLock(isOpen);
 
   if (!isOpen || typeof document === "undefined") return null;
 

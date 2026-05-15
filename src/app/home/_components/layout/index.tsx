@@ -9,7 +9,7 @@ interface HomeLayoutProps {
 
 export default function HomeLayout({ children }: HomeLayoutProps) {
   return (
-    <div className="min-w-[1280px]">
+    <div>
       <Header />
       <Main>{children}</Main>
     </div>

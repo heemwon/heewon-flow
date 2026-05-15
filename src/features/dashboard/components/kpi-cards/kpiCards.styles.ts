@@ -1,7 +1,8 @@
 export const kpiCardsBaseClass =
-  "grid grid-cols-4 gap-md min-h-[110px] w-full ";
+  "grid grid-cols-4 gap-md min-w-max min-h-[110px] w-full " + "lg:min-w-auto ";
 export const kpiCardBaseClass =
-  "flex flex-col gap-xxs p-md min-h-[110px] rounded-md bg-white border border-gray-200 ";
+  "flex flex-col gap-xxs p-md w-[200px] min-h-[110px] rounded-md bg-white border border-gray-200 " +
+  "lg:w-auto";
 
 export const kpiCardTitleBaseClass = "not-italic text-gray-700 text-label-md ";
 export const kpiCardValueBaseClass = "text-gray-900 text-heading-md ";

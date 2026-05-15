@@ -34,7 +34,7 @@ export default function CreateUser() {
     <Section
       id="create-user"
       title="사용자 추가"
-      className="flex-col gap-lg pt-xxl "
+      className="flex-col gap-lg p-md pt-xxl "
     >
       <UserForm
         errors={errors}
@@ -42,7 +42,7 @@ export default function CreateUser() {
         userValue={values}
         handleChange={handleChange}
       />
-      <Button className="mt-xxl w-[480px]" onClick={handleCreate}>
+      <Button className="mt-xxl w-full lg:w-[480px]" onClick={handleCreate}>
         추가하기
       </Button>
     </Section>

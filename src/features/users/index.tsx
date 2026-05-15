@@ -122,9 +122,13 @@ export default function Users() {
 
   return (
     <>
-      <Section id="users" title="최근 사용자" className="w-full">
-        <div className="flex-1 flex items-center justify-between">
-          <div className="w-[280px]">
+      <Section
+        id="users"
+        title="최근 사용자"
+        className="pl-md w-full gap-xs lg:gap-sm lg:pl-0 "
+      >
+        <div className="flex items-center justify-between lg:flex-1">
+          <div className="hidden w-[280px] lg:block ">
             <TextField
               id="users-textfield"
               label="최근 사용자 목록 검색"
@@ -133,7 +137,7 @@ export default function Users() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          <div className="grid grid-cols-2 gap-xs w-[238px]">
+          <div className="grid grid-cols-2 gap-xs pr-md w-[280px] lg:pr-0 lg:w-[252px] ">
             <Dropdown
               id="users-dropdown"
               label="최근 사용자 목록 상태별 필터링"
@@ -151,15 +155,26 @@ export default function Users() {
             </Button>
           </div>
         </div>
+        <div className="w-full pr-md lg:hidden ">
+          <TextField
+            id="users-textfield"
+            label="최근 사용자 목록 검색"
+            srOnly
+            placeholder="이름, 이메일 검색"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
 
-        <UserTable
-          data={data ?? []}
-          caption="최근 사용자 목록 전체 테이블"
-          isLoading={isLoading}
-          rowCell={dashboardColumns}
-          columns={tableColumns}
-          colLength={7}
-        />
+        <div className="overflow-x-auto pr-md lg:pr-0 ">
+          <UserTable
+            data={data ?? []}
+            caption="최근 사용자 목록 전체 테이블"
+            isLoading={isLoading}
+            rowCell={dashboardColumns}
+            columns={tableColumns}
+            colLength={7}
+          />
+        </div>
       </Section>
 
       <DeleteUserDialog

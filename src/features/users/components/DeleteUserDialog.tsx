@@ -35,10 +35,18 @@ export default function DeleteUserDialog({
       </Dialog.Body>
 
       <Dialog.Footer>
-        <Button className="w-[120px]" variant="secondary" onClick={onClose}>
+        <Button
+          className="w-full md:w-[120px] "
+          variant="secondary"
+          onClick={onClose}
+        >
           취소
         </Button>
-        <Button className="w-[120px]" variant="primary" onClick={handleDelete}>
+        <Button
+          className="w-full md:w-[120px] "
+          variant="primary"
+          onClick={handleDelete}
+        >
           확인
         </Button>
       </Dialog.Footer>

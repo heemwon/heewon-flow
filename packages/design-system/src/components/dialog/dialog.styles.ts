@@ -2,15 +2,18 @@ export const dialogOverlayClass =
   "z-500 w-full h-screen flex items-center justify-center bg-gray-900/40 ";
 
 export const dialogPanelClass =
-  "relative z-0 flex flex-col gap-md px-lg pt-lg pb-xxxl w-[420px] rounded-lg bg-white shadow-modal " +
-  "focus-visible:outline-none";
+  "relative z-0 flex flex-col gap-md px-lg pt-lg pb-xxxl w-[90%] rounded-lg bg-white shadow-modal " +
+  "focus-visible:outline-none " +
+  "md:w-[420px] ";
 
 export const dialogHeaderClass = {
   left: "text-gray-900 text-heading-md ",
-  center: "pt-lg pb-xxs text-center text-gray-900 text-heading-lg ",
+  center:
+    "pt-lg pb-xxs text-center text-gray-900 text-heading-md " +
+    "md:text-heading-lg ",
 } as const;
 
 export const dialogFooterClass =
-  "flex items-center justify-center gap-xs pt-lg";
+  "flex items-center justify-center gap-xs pt-lg ";
 
 export const dialogCloseButtonClass = "absolute top-sm right-sm z-1 p-xs";

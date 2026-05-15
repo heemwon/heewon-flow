@@ -95,7 +95,7 @@ export default function LineChart({ data, isLoading }: LineChartProps) {
 
   return (
     <div
-      className={`${lineChartBaseClass} w-full h-[240px]`}
+      className={lineChartBaseClass}
       aria-label="수익 및 방문자 추이 차트"
       aria-busy="false"
     >

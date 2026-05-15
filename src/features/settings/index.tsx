@@ -44,13 +44,13 @@ export default function Settings() {
         id="settings"
         title="설정"
         titleSrOnly
-        className="flex flex-col items-start gap-sm "
+        className="flex flex-col items-start gap-sm px-md lg:px-0 "
       >
         <Workspace data={values} handleChange={handleChange} errors={errors} />
         <Notification data={values} handleChange={handleChange} />
         <Private data={values} handleChange={handleChange} />
 
-        <div className="flex items-center gap-sm pt-xl ml-auto w-[400px]">
+        <div className="flex items-center gap-xs pt-xl ml-auto w-full md:gap-sm md:w-[400px]">
           <Button variant="secondary" onClick={onReset} disabled={!isDirty}>
             초기화
           </Button>

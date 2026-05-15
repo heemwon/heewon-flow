@@ -51,7 +51,7 @@ export default function Dashboard({ initialUserId }: DashboardProps) {
   ];
 
   const dashboardColumns = [
-    { id: "dashboard-name", width: "200px" },
+    { id: "dashboard-name", width: "120px" },
     { id: "dashboard-email" },
     { id: "dashboard-status", width: "120px" },
     { id: "dashboard-role", width: "120px" },
@@ -68,16 +68,16 @@ export default function Dashboard({ initialUserId }: DashboardProps) {
         id="dashboard-kpi"
         title="주요 성과 지표"
         titleSrOnly
-        className="w-full"
+        className="overflow-x-auto px-lg pb-lg w-full lg:p-0 "
       >
         <KpiCards data={data?.kpis ?? []} isLoading={isDashboardLoading} />
       </Section>
 
-      <div className="grid grid-cols-2 gap-md w-full h-[332px]">
+      <div className="p-lg pt-0 w-full lg:grid lg:grid-cols-2 lg:gap-md lg:p-0 lg:h-[332px]">
         <Section
           id="dashboard-chart"
           title="매출 추이"
-          className="p-md bg-white rounded-md border border-gray-200"
+          className="lg:p-md lg:bg-white lg:rounded-md lg:border lg:border-gray-200"
         >
           <div className="w-[128px]">
             <Dropdown
@@ -96,7 +96,7 @@ export default function Dashboard({ initialUserId }: DashboardProps) {
         <Section
           id="dashboard-activities"
           title="최근 활동"
-          className="p-md bg-white rounded-md border border-gray-200"
+          className="mt-xxxl lg:mt-0 lg:p-md lg:bg-white lg:rounded-md lg:border lg:border-gray-200"
         >
           <Activities
             data={data?.activities ?? []}
@@ -105,8 +105,12 @@ export default function Dashboard({ initialUserId }: DashboardProps) {
         </Section>
       </div>
 
-      <Section id="dashboard-users" title="최근 사용자" className="w-full">
-        <div>
+      <Section
+        id="dashboard-users"
+        title="최근 사용자"
+        className="p-md pr-0 w-full lg:p-0 "
+      >
+        <div className="pr-md lg:pr-0 ">
           <Button
             variant="secondary"
             size="sm"
@@ -116,14 +120,16 @@ export default function Dashboard({ initialUserId }: DashboardProps) {
             전체 보기
           </Button>
         </div>
-        <UserTable
-          data={data?.recentUsers ?? []}
-          caption="최근 사용자 목록 요약 테이블"
-          isLoading={isLoading}
-          rowCell={dashboardRowCell}
-          columns={dashboardColumns}
-          colLength={5}
-        />
+        <div className="overflow-x-auto pr-md lg:pr-0 ">
+          <UserTable
+            data={data?.recentUsers ?? []}
+            caption="최근 사용자 목록 요약 테이블"
+            isLoading={isLoading}
+            rowCell={dashboardRowCell}
+            columns={dashboardColumns}
+            colLength={5}
+          />
+        </div>
       </Section>
     </>
   );

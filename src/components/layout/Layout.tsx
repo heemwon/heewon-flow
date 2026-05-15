@@ -10,7 +10,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex min-h-screen min-w-[1280px]">
+    <div className="relative min-h-screen lg:static lg:flex ">
       <Sidebar />
 
       <div className="flex flex-col flex-1">

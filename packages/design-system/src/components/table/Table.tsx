@@ -15,7 +15,6 @@ import {
   tableHeaderCellClass,
   tableRowClass,
   tableRowVariantClass,
-  tableWrapperClass,
 } from "./table.styles";
 import { cn } from "@design-system/lib/cn";
 import Skeleton from "../skeleton/Skeleton";
@@ -34,21 +33,23 @@ function TableRoot({
   ...props
 }: TableProps) {
   return (
-    <div aria-busy={isLoading} className={tableWrapperClass}>
-      <table className={clsx(tableBaseClass, className)} {...props}>
-        <caption className="sr-only">
-          {isLoading ? "테이블 데이터를 불러오는 중입니다." : caption}
-        </caption>
-        {columns && (
-          <colgroup>
-            {columns.map((col) => (
-              <col key={col.id} style={{ width: col.width }} />
-            ))}
-          </colgroup>
-        )}
-        {children}
-      </table>
-    </div>
+    <table
+      aria-busy={isLoading}
+      className={clsx(tableBaseClass, className)}
+      {...props}
+    >
+      <caption className="sr-only">
+        {isLoading ? "테이블 데이터를 불러오는 중입니다." : caption}
+      </caption>
+      {columns && (
+        <colgroup>
+          {columns.map((col) => (
+            <col key={col.id} style={{ width: col.width }} />
+          ))}
+        </colgroup>
+      )}
+      {children}
+    </table>
   );
 }
 
