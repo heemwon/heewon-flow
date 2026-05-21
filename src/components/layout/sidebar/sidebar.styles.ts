@@ -1,5 +1,5 @@
 export const sidebarBaseClass =
-  "fixed top-0 left-0 z-200 flex flex-col min-w-auto w-full h-screen -translate-x-full transition-transform " +
+  "fixed top-0 left-0 z-200 flex flex-col min-w-auto w-full h-screen -translate-x-[110%] transition-transform " +
   "lg:sticky lg:min-w-[282px] lg:w-[282px] lg:translate-none ";
 export const sidebarIsOpenClass = "translate-none ";
 

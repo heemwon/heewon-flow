@@ -1,5 +1,5 @@
 export const notificationContentClass = "divide-y divide-gray-200 ";
-export const notificationListBaseClass = "flex items-center py-md ";
+export const notificationListBaseClass = "flex items-center py-md gap-xs ";
 
 export const notificationInfoBaseClass = "flex-1 ";
 export const notificationTitleBaseClass =

@@ -2,7 +2,7 @@ export const containerBaseClass =
   "flex flex-col gap-md p-xl w-full rounded-md bg-white border border-gray-200 " +
   "md:flex-row ";
 
-export const containerInfoBaseClass = "w-[30%]";
+export const containerInfoBaseClass = "md:w-[30%]";
 export const containerTitleBaseClass = "text-heading-md text-gray-900 ";
 export const containerDescBaseClass = "mt-xxs text-body-md text-gray-500 ";
 
