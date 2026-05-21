@@ -1,11 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { useSidebarActions, useSidebarOpen } from "store/useSidebarStore";
+import {
+  useMobileSidebarOpen,
+  useSidebarActions,
+  useSidebarOpen,
+} from "store/useSidebarStore";
 import { SideMenuIcon } from "@/icons/SideMenuIcon";
 import IconButton from "@design-system/components/icon-button/IconButton";
 import { cn } from "@design-system/lib/cn";
@@ -31,38 +35,46 @@ export default function Sidebar() {
   const pathname = usePathname();
   const sidebarRef = useRef<HTMLElement>(null);
 
-  const isDesktopSidebarOpen = useSidebarOpen();
-  const { toggleSidebar } = useSidebarActions();
-
   const isMobile = useMediaQuery("(max-width: 1024px)");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isDesktopOpen = useSidebarOpen();
+  const isMobileOpen = useMobileSidebarOpen();
 
-  const shouldTrapFocus = isMobile && isMobileMenuOpen;
+  const { toggleSidebar, toggleMobileSidebar, setMobileSidebar } =
+    useSidebarActions();
+
+  const isOpen = isMobile ? isMobileOpen : isDesktopOpen;
+  const shouldTrapFocus = isMobile && isMobileOpen;
 
   useEffect(() => {
-    console.log("isMobile", isMobile);
     if (isMobile) {
-      setIsMobileMenuOpen(isDesktopSidebarOpen);
-    } else {
-      setIsMobileMenuOpen(false);
+      setMobileSidebar(false);
     }
-  }, [isMobile, isDesktopSidebarOpen]);
+  }, [isMobile, setMobileSidebar]);
 
   useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
+    setMobileSidebar(false);
+  }, [pathname, setMobileSidebar]);
 
   useFocusTrap({
     isOpen: shouldTrapFocus,
     containerRef: sidebarRef,
-    onClose: () => setIsMobileMenuOpen(false),
+    onClose: () => setMobileSidebar(false),
   });
 
   useBodyScrollLock(shouldTrapFocus);
 
+  const handleToggleSidebar = () => {
+    if (isMobile) {
+      toggleMobileSidebar();
+      return;
+    }
+
+    toggleSidebar();
+  };
+
   const handleMenuClick = () => {
     if (isMobile) {
-      setIsMobileMenuOpen(false);
+      setMobileSidebar(false);
     }
   };
 
@@ -70,19 +82,16 @@ export default function Sidebar() {
     <aside
       ref={sidebarRef}
       tabIndex={-1}
-      className={clsx(sidebarBaseClass, isMobileMenuOpen && sidebarIsOpenClass)}
+      className={clsx(sidebarBaseClass, isOpen && sidebarIsOpenClass)}
     >
       <div
-        className={clsx(
-          sidebarToggleClass,
-          !isDesktopSidebarOpen && sidebarToggleHideClass
-        )}
+        className={clsx(sidebarToggleClass, !isOpen && sidebarToggleHideClass)}
       >
         <IconButton
-          label={`사이드 메뉴 ${isDesktopSidebarOpen ? "닫기" : "열기"}`}
-          onClick={toggleSidebar}
+          label={`사이드 메뉴 ${isOpen ? "닫기" : "열기"}`}
+          onClick={handleToggleSidebar}
           className={sidebarToggleButtonClass}
-          aria-expanded={isMobile ? isMobileMenuOpen : isDesktopSidebarOpen}
+          aria-expanded={isOpen}
           aria-controls="sidebar-navigation"
         >
           <SideMenuIcon />
@@ -94,12 +103,7 @@ export default function Sidebar() {
         aria-label="주요 메뉴"
         className={sidebarMenuContainerClass}
       >
-        <ul
-          className={cn(
-            sidebarMenuClass,
-            !isDesktopSidebarOpen && sidebarMenuHideClass
-          )}
-        >
+        <ul className={cn(sidebarMenuClass, !isOpen && sidebarMenuHideClass)}>
           {MENU_LIST.map((menu) => {
             const isSelected = pathname === menu.href;
 
