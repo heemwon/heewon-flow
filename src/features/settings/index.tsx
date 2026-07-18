@@ -15,16 +15,25 @@ import { useForm } from "../dashboard/hooks/useForm";
 import { useUpdateSettings } from "./hooks/useUpdateSettings";
 
 export default function Settings() {
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-
   const { data } = useSettingsData();
-  const { mutate: updateSettings } = useUpdateSettings();
 
   if (!data) return null;
 
+  return <SettingsForm initialValues={data} />;
+}
+
+interface SettingsFormProps {
+  initialValues: Settings;
+}
+
+function SettingsForm({ initialValues }: SettingsFormProps) {
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+
+  const { mutate: updateSettings } = useUpdateSettings();
+
   const { values, errors, isDirty, handleChange, onSubmit, onReset } =
     useForm<Settings>({
-      initialValues: data,
+      initialValues,
       validateFn: validateSettingsForm,
     });
 

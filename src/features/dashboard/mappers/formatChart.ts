@@ -1,6 +1,10 @@
-export const formatChart = <T extends Record<string, any>>(
-  rawData: T[],
-  dataKeys: Array<{ key: keyof T; name: string; color?: string }>
+import type { DashboardChartPoint } from "../types/dashboard.types";
+
+type ChartValueKey = keyof Pick<DashboardChartPoint, "revenue" | "users">;
+
+export const formatChart = (
+  rawData: DashboardChartPoint[],
+  dataKeys: Array<{ key: ChartValueKey; name: string; color?: string }>
 ) => {
   const categories = rawData.map((item) => item.label);
 

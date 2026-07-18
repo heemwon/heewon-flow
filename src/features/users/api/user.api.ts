@@ -25,7 +25,7 @@ export async function getUserData(params: Params = {}): Promise<User[]> {
     );
   }
 
-  if (status !== "all") {
+  if (status && status !== "all") {
     filteredData = filteredData.filter((user) => user.status === status);
   }
 

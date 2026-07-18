@@ -1,23 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import Dropdown from "@design-system/components/dropdown/Dropdown";
 import Button from "@design-system/components/button/Button";
 import Skeleton from "@design-system/components/skeleton/Skeleton";
-import Badge from "@design-system/components/badge/Badge";
 import Section from "@/components/layout/section/Section";
 import { useSession } from "@/app/shared/hooks/useSession";
-import { formatBadge } from "@/features/dashboard/mappers/formatBadge";
 import KpiCards from "./components/kpi-cards";
 import Activities from "./components/activities";
 import { useDashboardData } from "./hooks/useDashboardData";
 import { PERIOD_OPTIONS } from "./constants/period";
 import { DashboardChartPeriod } from "./types/dashboard.types";
-import UserTable, { RowCell } from "../users/components/UserTable";
-import type { User } from "../users/types/user.types";
+import {
+  DASHBOARD_RECENT_USER_COLUMNS,
+  DASHBOARD_RECENT_USER_ROW_CELLS,
+} from "./constants/recentUsersTable";
+import UserTable from "../users/components/UserTable";
 
 const LineChart = dynamic(() => import("./components/line-chart"), {
   ssr: false,
@@ -39,28 +40,9 @@ export default function Dashboard({ initialUserId }: DashboardProps) {
   const isDashboardLoading = !userId || !data || isLoading;
   const chartData = data?.chart?.[period] ?? [];
 
-  const dashboardRowCell: RowCell<User>[] = [
-    { header: "이름", render: (u) => u.name },
-    { header: "이메일", render: (u) => u.email },
-    {
-      header: "상태",
-      render: (u) => <Badge variant={formatBadge(u.status)}>{u.status}</Badge>,
-    },
-    { header: "권한", render: (u) => u.role },
-    { header: "가입일", render: (u) => u.joinedAt },
-  ];
-
-  const dashboardColumns = [
-    { id: "dashboard-name", width: "120px" },
-    { id: "dashboard-email" },
-    { id: "dashboard-status", width: "120px" },
-    { id: "dashboard-role", width: "120px" },
-    { id: "dashboard-join", width: "150px" },
-  ];
-
-  const onChangePeriod = (value: string) => {
+  const onChangePeriod = useCallback((value: string) => {
     setPeriod(value as DashboardChartPeriod);
-  };
+  }, []);
 
   return (
     <>
@@ -125,8 +107,8 @@ export default function Dashboard({ initialUserId }: DashboardProps) {
             data={data?.recentUsers ?? []}
             caption="최근 사용자 목록 요약 테이블"
             isLoading={isLoading}
-            rowCell={dashboardRowCell}
-            columns={dashboardColumns}
+            rowCell={DASHBOARD_RECENT_USER_ROW_CELLS}
+            columns={DASHBOARD_RECENT_USER_COLUMNS}
             colLength={5}
           />
         </div>

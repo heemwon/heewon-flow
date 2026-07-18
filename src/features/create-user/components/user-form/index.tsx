@@ -10,9 +10,9 @@ interface UserFormProps {
   errors: Partial<Record<keyof User, string>>;
   isSubmitted: boolean;
   userValue: Partial<User>;
-  handleChange: <K extends keyof User>(args: {
+  handleChange: <K extends keyof Partial<User>>(args: {
     key: K;
-    value: User[K];
+    value: Partial<User>[K];
   }) => void;
 }
 
@@ -25,32 +25,36 @@ export default function UserForm({
   return (
     <div className={userFormBaseClass}>
       {USER_FORM_FIELDS.map((field) => {
-        const isError = !!errors[field.key as keyof User];
+        const key = field.key;
+        const isError = !!errors[key];
         const fieldProps = {
-          id: `create-field-${field.key}`,
+          id: `create-field-${key}`,
           label: field.label,
           placeholder: field.placeholder,
-          helpMessage: errors[field.key as keyof User],
+          helpMessage: errors[key],
           isError:
             field.type === "dropdown"
-              ? (isSubmitted && !userValue[field.key as keyof User]) || isError
+              ? (isSubmitted && !userValue[key]) || isError
               : isError,
         };
 
         if (field.type === "text") {
           return (
             <TextField
-              key={field.key}
+              key={key}
               {...fieldProps}
-              value={userValue[field.key as keyof User] as string}
+              value={userValue[key] as string}
               onChange={(e) =>
                 handleChange({
-                  key: field.key as keyof User,
-                  value: e.target.value as any,
+                  key,
+                  value: e.target.value as Partial<User>[typeof key],
                 })
               }
               onClear={() =>
-                handleChange({ key: field.key as keyof User, value: "" as any })
+                handleChange({
+                  key,
+                  value: "" as Partial<User>[typeof key],
+                })
               }
             />
           );
@@ -58,14 +62,14 @@ export default function UserForm({
 
         return (
           <Dropdown
-            key={field.key}
+            key={key}
             {...fieldProps}
-            value={userValue[field.key as keyof User]}
+            value={userValue[key]}
             options={field.options}
             onChange={(value) =>
               handleChange({
-                key: field.key as keyof User,
-                value: value as any,
+                key,
+                value: value as Partial<User>[typeof key],
               })
             }
           />

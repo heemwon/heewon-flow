@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-export const useForm = <T extends Record<string, any>>({
+export const useForm = <T extends object>({
   initialValues,
   validateFn,
 }: {
