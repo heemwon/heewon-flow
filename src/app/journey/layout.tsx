@@ -2,8 +2,8 @@ import { ReactNode } from "react";
 import type { Metadata } from "next";
 
 import SkipNav from "../shared/ui/SkipNav";
-import Header from "./_components/Header";
-import Footer from "./_components/Footer";
+import Header from "@/features/journey/components/Header";
+import Footer from "@/features/journey/components/Footer";
 
 interface JourneyLayoutProps {
   children: ReactNode;

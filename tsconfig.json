@@ -24,9 +24,9 @@
       "@design-system": ["packages/design-system/src/index.ts"],
 
       "@/*": ["./src/*"],
-      "@journey/*": ["./src/app/journey/*"],
+      "@journey/*": ["./src/features/journey/*"],
       "@shared/*": ["./src/app/shared/*"],
-      "@features/*": ["./src/app/features/*"]
+      "@features/*": ["./src/features/*"]
     }
   },
   "include": [

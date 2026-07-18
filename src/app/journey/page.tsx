@@ -1,20 +1,5 @@
-import ContactSection from "./_sections/ContactSection";
-import IntegratedScroll from "./_sections/IntegratedScroll";
-import IntroOnboardingSection from "./_sections/IntroOnboardingSection";
-import IntroSection from "./_sections/IntroSection";
-import OthersSection from "./_sections/OthersSection";
+import Journey from "@/features/journey";
 
 export default function JourneyPage() {
-  return (
-    <>
-      <IntroSection />
-      <IntroOnboardingSection />
-
-      {/* sticky contents */}
-      <IntegratedScroll />
-
-      <OthersSection />
-      <ContactSection />
-    </>
-  );
+  return <Journey />;
 }
