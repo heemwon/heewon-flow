@@ -5,14 +5,16 @@ import {
 } from "@tanstack/react-query";
 
 import Settings from "@/features/settings";
-import { getSettingsData } from "@/features/settings/api/settings.api";
+import { getSettingsDataFromSource } from "@/features/settings/api/settings.server";
+
+export const dynamic = "force-dynamic";
 
 export default async function SettingsPage() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: ["settings", "detail"],
-    queryFn: getSettingsData,
+    queryFn: getSettingsDataFromSource,
   });
 
   return (

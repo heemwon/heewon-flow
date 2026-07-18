@@ -9,7 +9,10 @@ import IconButton from "@design-system/components/icon-button/IconButton";
 import TextField from "@design-system/components/text-field/TextField";
 import Dropdown from "@design-system/components/dropdown/Dropdown";
 import { MoreDotIcon } from "@design-system/icons/MoreDotIcon";
+import ErrorDialog from "@/components/feedback/ErrorDialog";
+import InlineError from "@/components/feedback/InlineError";
 import Section from "@/components/layout/section/Section";
+import { getErrorMessage } from "@/lib/http";
 import { formatBadge } from "@/features/dashboard/mappers/formatBadge";
 import useDebounce from "@/app/shared/hooks/useDebounce";
 import UserTable, { RowCell } from "../users/components/UserTable";
@@ -47,11 +50,11 @@ export default function Users() {
 
   const debouncedSearch = useDebounce({ value: search, delay: 300 });
 
-  const { data, isLoading } = useUserData({
+  const { data, isError, isLoading, error, refetch } = useUserData({
     search: debouncedSearch,
     status,
   });
-  const { mutate: deleteUsers } = useDeleteUsers();
+  const { mutate: deleteUsers, error: deleteError, reset } = useDeleteUsers();
 
   const handleDialog = (type: "confirm" | "detail" | null) => {
     setDialogType(type);
@@ -71,6 +74,9 @@ export default function Users() {
     deleteUsers(selectedIds, {
       onSuccess: () => {
         setSelectedIds([]);
+        handleDialog(null);
+      },
+      onError: () => {
         handleDialog(null);
       },
     });
@@ -166,14 +172,24 @@ export default function Users() {
         </div>
 
         <div className="overflow-x-auto pr-md lg:pr-0 ">
-          <UserTable
-            data={data ?? []}
-            caption="최근 사용자 목록 전체 테이블"
-            isLoading={isLoading}
-            rowCell={dashboardColumns}
-            columns={tableColumns}
-            colLength={7}
-          />
+          {isError ? (
+            <InlineError
+              message={getErrorMessage(
+                error,
+                "사용자 목록을 불러오지 못했습니다."
+              )}
+              onRetry={() => refetch()}
+            />
+          ) : (
+            <UserTable
+              data={data ?? []}
+              caption="최근 사용자 목록 전체 테이블"
+              isLoading={isLoading}
+              rowCell={dashboardColumns}
+              columns={tableColumns}
+              colLength={7}
+            />
+          )}
         </div>
       </Section>
 
@@ -190,6 +206,14 @@ export default function Users() {
         userData={data ?? []}
         detailId={detailId}
         onClose={() => handleDialog(null)}
+      />
+      <ErrorDialog
+        isOpen={!!deleteError}
+        titleId="dialog-delete-error-title"
+        descriptionId="dialog-delete-error-desc"
+        title="사용자를 삭제하지 못했습니다."
+        message={getErrorMessage(deleteError, "잠시 후 다시 시도해 주세요.")}
+        onClose={reset}
       />
     </>
   );

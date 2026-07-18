@@ -1,18 +1,32 @@
-import { settingsMock } from "../mocks/settings.mock";
 import type { Settings } from "../types/settings.types";
-
-let memorySettings: Settings = { ...settingsMock };
+import { getApiErrorMessage } from "@/lib/http";
 
 export async function getSettingsData(): Promise<Settings> {
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  const response = await fetch("/api/settings", { cache: "no-store" });
 
-  return memorySettings;
+  if (!response.ok) {
+    throw new Error(
+      await getApiErrorMessage(response, "설정 정보를 불러오지 못했습니다.")
+    );
+  }
+
+  return response.json();
 }
 
 export async function updateSettings(payload: Settings): Promise<Settings> {
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  const response = await fetch("/api/settings", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
 
-  memorySettings = payload;
+  if (!response.ok) {
+    throw new Error(
+      await getApiErrorMessage(response, "설정을 저장하지 못했습니다.")
+    );
+  }
 
-  return memorySettings;
+  return response.json();
 }

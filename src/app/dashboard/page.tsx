@@ -5,8 +5,10 @@ import {
 } from "@tanstack/react-query";
 
 import Dashboard from "@/features/dashboard";
-import { getDashboardData } from "@/features/dashboard/api/dashboard.api";
+import { getDashboardDataFromSource } from "@/features/dashboard/api/dashboard.server";
 import { getSessionUser } from "../shared/api/session.api";
+
+export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   const queryClient = new QueryClient();
@@ -17,7 +19,7 @@ export default async function DashboardPage() {
   if (isLogined) {
     await queryClient.prefetchQuery({
       queryKey: ["dashboard", "detail", userSession.userId],
-      queryFn: getDashboardData,
+      queryFn: getDashboardDataFromSource,
     });
   }
 

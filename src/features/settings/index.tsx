@@ -3,7 +3,10 @@
 import { useState } from "react";
 
 import Button from "@design-system/components/button/Button";
+import ErrorDialog from "@/components/feedback/ErrorDialog";
+import InlineError from "@/components/feedback/InlineError";
 import Section from "@/components/layout/section/Section";
+import { getErrorMessage } from "@/lib/http";
 import Workspace from "./components/workspace";
 import Notification from "./components/notification";
 import Private from "./components/security";
@@ -15,9 +18,25 @@ import { useForm } from "../dashboard/hooks/useForm";
 import { useUpdateSettings } from "./hooks/useUpdateSettings";
 
 export default function Settings() {
-  const { data } = useSettingsData();
+  const { data, error, isError, isLoading, refetch } = useSettingsData();
 
-  if (!data) return null;
+  if (isLoading) return null;
+
+  if (isError || !data) {
+    return (
+      <Section
+        id="settings"
+        title="설정"
+        titleSrOnly
+        className="flex flex-col items-start gap-sm px-md lg:px-0 "
+      >
+        <InlineError
+          message={getErrorMessage(error, "설정 정보를 불러오지 못했습니다.")}
+          onRetry={() => refetch()}
+        />
+      </Section>
+    );
+  }
 
   return <SettingsForm initialValues={data} />;
 }
@@ -29,7 +48,11 @@ interface SettingsFormProps {
 function SettingsForm({ initialValues }: SettingsFormProps) {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
-  const { mutate: updateSettings } = useUpdateSettings();
+  const {
+    mutate: updateSettings,
+    error: updateError,
+    reset: resetUpdateError,
+  } = useUpdateSettings();
 
   const { values, errors, isDirty, handleChange, onSubmit, onReset } =
     useForm<Settings>({
@@ -74,6 +97,14 @@ function SettingsForm({ initialValues }: SettingsFormProps) {
         titleId="dialog-settings-title"
         descriptionId="dialog-settings-desc"
         onClose={() => setIsDialogOpen(false)}
+      />
+      <ErrorDialog
+        isOpen={!!updateError}
+        titleId="dialog-settings-error-title"
+        descriptionId="dialog-settings-error-desc"
+        title="설정을 저장하지 못했습니다."
+        message={getErrorMessage(updateError, "잠시 후 다시 시도해 주세요.")}
+        onClose={resetUpdateError}
       />
     </>
   );

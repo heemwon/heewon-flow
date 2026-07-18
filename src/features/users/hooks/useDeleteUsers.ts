@@ -12,9 +12,5 @@ export const useDeleteUsers = () => {
         queryKey: ["users", "detail"],
       });
     },
-    onError: (error) => {
-      alert("삭제 중 오류가 발생했습니다.");
-      console.error(error);
-    },
   });
 };

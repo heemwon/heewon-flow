@@ -1,7 +1,5 @@
-import { userMock } from "../mocks/user.mock";
 import { User, UserStatusUi } from "../types/user.types";
-
-let memoryUsers: User[] = [...userMock];
+import { getApiErrorMessage } from "@/lib/http";
 
 interface Params {
   search?: string;
@@ -10,38 +8,61 @@ interface Params {
 
 export async function getUserData(params: Params = {}): Promise<User[]> {
   const { search, status } = params;
-
-  await new Promise((resolve) => setTimeout(resolve, 500));
-
-  let filteredData = [...memoryUsers];
+  const queryParams = new URLSearchParams();
 
   if (search) {
-    const lowerSearch = search.toLowerCase();
+    queryParams.set("search", search);
+  }
 
-    filteredData = filteredData.filter(
-      (user) =>
-        user.name.toLowerCase().includes(lowerSearch) ||
-        user.email.toLowerCase().includes(lowerSearch)
+  if (status) {
+    queryParams.set("status", status);
+  }
+
+  const queryString = queryParams.toString();
+  const response = await fetch(
+    `/api/users${queryString ? `?${queryString}` : ""}`,
+    { cache: "no-store" }
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      await getApiErrorMessage(response, "사용자 목록을 불러오지 못했습니다.")
     );
   }
 
-  if (status && status !== "all") {
-    filteredData = filteredData.filter((user) => user.status === status);
-  }
-
-  return filteredData;
+  return response.json();
 }
 
 export async function createUser(payload: User): Promise<User> {
-  await new Promise((resolve) => setTimeout(resolve, 400));
+  const response = await fetch("/api/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
 
-  memoryUsers = [payload, ...memoryUsers];
+  if (!response.ok) {
+    throw new Error(
+      await getApiErrorMessage(response, "사용자를 생성하지 못했습니다.")
+    );
+  }
 
-  return payload;
+  return response.json();
 }
 
 export async function deleteUsers(userIds: string[]): Promise<void> {
-  await new Promise((resolve) => setTimeout(resolve, 400));
+  const response = await fetch("/api/users", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userIds }),
+  });
 
-  memoryUsers = memoryUsers.filter((user) => !userIds.includes(user.id));
+  if (!response.ok) {
+    throw new Error(
+      await getApiErrorMessage(response, "사용자를 삭제하지 못했습니다.")
+    );
+  }
 }
