@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import Button from "@design-system/components/button/Button";
-import { ProjectItemButton } from "../../_types/projects";
+import { ProjectItemButton } from "../../types/projects";
 import { projectInfoButtonsClass } from "./projectInfo.styles";
 
 interface ButtonContainerProps {

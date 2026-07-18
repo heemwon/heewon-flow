@@ -1,4 +1,4 @@
-import { ProjectList } from "../../_types/projects";
+import { ProjectList } from "../../types/projects";
 import BadgeContainer from "./BadgeContainer";
 import ButtonContainer from "./ButtonContainer";
 import Desc from "./Desc";

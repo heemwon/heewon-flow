@@ -12,6 +12,7 @@ export interface ProjectItemButton {
 export interface ProjectItemPreview {
   img: string;
   label: string;
+  title: string;
 }
 
 export interface ProjectList {

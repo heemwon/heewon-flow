@@ -6,7 +6,7 @@ import {
   projectPreviewImgClass,
   projectPreviewTitleClass,
 } from "./projectPreview.style";
-import { ProjectItemPreview } from "../../_types/projects";
+import { ProjectItemPreview } from "../../types/projects";
 
 interface ProjectPreview {
   index: number;
@@ -20,15 +20,19 @@ export default function ProjectPreview({
   href,
 }: ProjectPreview) {
   return (
-    <Link href={href} className={projectPreviewBaseClass}>
+    <Link
+      href={href}
+      className={projectPreviewBaseClass}
+      aria-label={`${project.label}: ${project.title} 프로젝트로 이동`}
+    >
       <span className={projectPreviewTitleClass}>{project.label}</span>
       <Image
         fill
         src={project.img}
-        alt={`${project.label} 프로젝트 미리보기`}
-        sizes="(max-width: 768px) 100vw, 50vw"
+        alt=""
+        sizes="(max-width: 768px) calc(100vw - 40px), 620px"
         className={projectPreviewImgClass}
-        priority={index === 0 || index === 1}
+        priority={index === 0}
       />
     </Link>
   );

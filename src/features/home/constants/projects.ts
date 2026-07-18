@@ -1,4 +1,4 @@
-import { ProjectList } from "../_types/projects";
+import { ProjectList } from "../types/projects";
 
 export const PROJECT_LIST: ProjectList[] = [
   {
@@ -22,6 +22,7 @@ export const PROJECT_LIST: ProjectList[] = [
     preview: {
       img: "/images/home/img-preview-dashboard.jpg",
       label: "Explore Project",
+      title: "SaaS Admin Dashboard",
     },
   },
   {
@@ -38,6 +39,7 @@ export const PROJECT_LIST: ProjectList[] = [
     preview: {
       img: "/images/home/img-preview-interactive.jpg",
       label: "Enter Experience",
+      title: "Interactive Portfolio",
     },
   },
 ];

@@ -1,5 +1,5 @@
 import Badge from "@design-system/components/badge/Badge";
-import { ProjectItemBadge } from "../../_types/projects";
+import { ProjectItemBadge } from "../../types/projects";
 import { projectInfoBadgesClass } from "./projectInfo.styles";
 
 interface BadgeContainerProps {
