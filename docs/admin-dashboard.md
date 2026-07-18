@@ -13,7 +13,8 @@ SaaS Admin 대시보드 프로젝트입니다.
 - Design System 기반 UI 구성
 - Feature 단위 폴더 구조 설계
 - TanStack Query 기반 서버 상태 관리
-- Mock API 기반 CRUD 시뮬레이션
+- Next Route Handler 기반 API 구성
+- Supabase 기반 데이터 영속화
 - 접근성(A11y)을 고려한 마크업 구조
 
 ---
@@ -24,6 +25,7 @@ SaaS Admin 대시보드 프로젝트입니다.
 - React
 - TypeScript
 - TanStack Query
+- Supabase
 - Tailwind CSS v4
 - Highcharts
 
@@ -71,17 +73,32 @@ Feature 단위로 관심사를 분리해 유지보수성과 확장성을 고려�
 
 ---
 
-### 3. TanStack Query + Mock API
+### 3. TanStack Query + Route Handlers
 
-Mock API 환경에서도 실제 서버 상태처럼 동작할 수 있도록 구성했습니다.
+Next Route Handlers를 통해 클라이언트와 데이터 저장소 사이의 API 계층을 분리했습니다.
 
-- get / post / delete 시뮬레이션
+- get / post / delete / put 요청 처리
 - invalidateQueries 기반 데이터 동기화
-- 새로고침 전까지 메모리 기반 상태 유지
+- Supabase 환경변수 설정 시 데이터 영속화
+- 환경변수가 없는 로컬 환경에서는 mock 데이터 fallback 사용
+
+자세한 Supabase 설정 방법은 [Supabase Setup](./supabase.md)을 참고합니다.
 
 ---
 
-### 4. Validation Architecture
+### 4. Error Feedback
+
+사용자에게 필요한 실패 피드백을 에러 유형별로 분리했습니다.
+
+- 조회 실패: 화면 흐름을 막지 않는 inline error와 재시도 버튼 제공
+- 생성 / 삭제 / 저장 실패: 디자인 시스템 Dialog 기반 feedback 제공
+- form validation: 필드 단위 inline message 유지
+
+API 응답의 에러 메시지는 공통 파서를 통해 클라이언트 피드백에 재사용합니다.
+
+---
+
+### 5. Validation Architecture
 
 범용 검증 로직은 디자인 시스템 내부에서 관리하고, 도메인 전용 검증은 feature 내부로 분리했습니다.
 
