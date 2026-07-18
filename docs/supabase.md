@@ -27,5 +27,11 @@ Run `supabase/schema.sql` in the Supabase SQL editor. It creates and seeds:
 - `dashboard_chart_points`
 - `dashboard_activities`
 
+The schema also grants the server-side `service_role` access to the dashboard
+tables. If the deployed API returns `permission denied for table users`, rerun
+the latest `supabase/schema.sql` and confirm that Vercel's
+`SUPABASE_SERVICE_ROLE_KEY` value is the service role or secret key, not the
+anon, publishable, JWT secret, or database password value.
+
 When the env vars are missing, the app falls back to the existing in-memory mock
 data so local builds and UI checks still work.

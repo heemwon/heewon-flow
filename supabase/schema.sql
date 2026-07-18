@@ -148,3 +148,15 @@ on conflict (id) do update set
   description = excluded.description,
   created_at_label = excluded.created_at_label,
   sort_order = excluded.sort_order;
+
+grant usage on schema public to service_role;
+
+grant select, insert, update, delete on table
+  public.users,
+  public.settings,
+  public.dashboard_kpis,
+  public.dashboard_chart_points,
+  public.dashboard_activities
+to service_role;
+
+grant usage, select on sequence public.dashboard_chart_points_id_seq to service_role;
