@@ -1,15 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setTheme("light");
-  }, [setTheme]);
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
     <div
@@ -17,21 +12,25 @@ export default function ThemeToggle() {
       className="rounded-full border border-gray-light shadow-s1"
     >
       <button
+        type="button"
         onClick={() => setTheme("light")}
         className={clsx(
           "w-[40px] h-[40px] rounded-full cursor-pointer md:w-[44px] md:h-[44px]",
-          theme === "light" && "bg-brand-primary"
+          resolvedTheme === "light" && "bg-brand-primary"
         )}
+        aria-pressed={resolvedTheme === "light"}
         aria-label="테마를 라이트 모드로 변경"
       >
         ☀️
       </button>
       <button
+        type="button"
         onClick={() => setTheme("dark")}
         className={clsx(
           "w-[40px] h-[40px] rounded-full cursor-pointer md:w-[44px] md:h-[44px]",
-          theme === "dark" && "bg-gray-light"
+          resolvedTheme === "dark" && "bg-gray-light"
         )}
+        aria-pressed={resolvedTheme === "dark"}
         aria-label="테마를 다크 모드로 변경"
       >
         🌙
